@@ -8,6 +8,15 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<h1>Manual Barcode Scanner</h1>
+	<div class="container">
+		<form action="/search">
+			Input Barcode Code:
+			<input type="text" name="barcode">
+			<input type="submit" value="Submit">
+		</form>
+	</div>
+
  	<h1>${name}</h1>
 	<div class="container">
 		<table class="table" border="1">
