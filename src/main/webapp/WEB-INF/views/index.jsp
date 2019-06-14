@@ -18,6 +18,7 @@
 	</div>
 
  	<h1>${name}</h1>
+ 	<h3>Allergens: ${allergens }</h3>
 	<div class="container">
 		<table class="table" border="1">
 			<thead>

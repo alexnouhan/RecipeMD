@@ -1,4 +1,4 @@
-package co.grandcircus.RecipeMD.entity;
+package co.grandcircus.RecipeMD.OpenFoodFactsEntities;
 
 import java.util.List;
 
@@ -8,16 +8,18 @@ public class Product {
 
 	private List<Ingredients> ingredients;
 	private String product_name_en;
+	private String allergens_from_ingredients;
 	
 	public Product() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
-	public Product(List<Ingredients> ingredients, String product_name_en) {
+	
+	public Product(List<Ingredients> ingredients, String product_name_en, String allergens_from_ingredients) {
 		super();
 		this.ingredients = ingredients;
 		this.product_name_en = product_name_en;
+		this.allergens_from_ingredients = allergens_from_ingredients;
 	}
 
 	public List<Ingredients> getIngredients() {
@@ -36,9 +38,14 @@ public class Product {
 		this.product_name_en = product_name_en;
 	}
 
-	@Override
-	public String toString() {
-		return "Product [ingredients=" + ingredients + ", product_name_en=" + product_name_en + "]";
+	public String getAllergens_from_ingredients() {
+		return allergens_from_ingredients;
 	}
+
+	public void setAllergens_from_ingredients(String allergens_from_ingredients) {
+		this.allergens_from_ingredients = allergens_from_ingredients;
+	}
+	
+	
 	
 }

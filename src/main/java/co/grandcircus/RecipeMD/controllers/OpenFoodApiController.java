@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
-import co.grandcircus.RecipeMD.entity.Results;
+import co.grandcircus.RecipeMD.OpenFoodFactsEntities.Results;
 
 @Controller
 public class OpenFoodApiController {
@@ -22,6 +22,7 @@ public class OpenFoodApiController {
 		
 		ModelAndView mv = new ModelAndView("index", "list", openFoodAPI.getProduct().getIngredients());
 		mv.addObject("name", openFoodAPI.getProduct().getProduct_name_en());
+		mv.addObject("allergens", openFoodAPI.getProduct().getAllergens_from_ingredients());
 		
 		System.out.println(openFoodAPI);
 		return mv;	
@@ -34,6 +35,7 @@ public class OpenFoodApiController {
 		
 		ModelAndView mv = new ModelAndView("index", "list", openFoodAPI.getProduct().getIngredients());
 		mv.addObject("name", openFoodAPI.getProduct().getProduct_name_en());
+		mv.addObject("allergens", openFoodAPI.getProduct().getAllergens_from_ingredients());
 		
 		System.out.println(openFoodAPI);
 		return mv;	

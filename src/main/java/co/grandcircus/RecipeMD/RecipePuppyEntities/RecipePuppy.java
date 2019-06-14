@@ -1,4 +1,4 @@
-package co.grandcircus.RecipeMD.entity;
+package co.grandcircus.RecipeMD.RecipePuppyEntities;
 
 import java.util.List;
 
