@@ -20,6 +20,8 @@ public class RecipeController {
 
 	RestTemplate rt = new RestTemplate();
 
+	// Jackson convereter is a media type -- changing media type from standard to all on the recipepuppy API
+	// This is also a placeholder that goes to the root of the API
 	@RequestMapping("/recipes")
 	public ModelAndView recipes() {
 		List<HttpMessageConverter<?>> messageConverters = new ArrayList<HttpMessageConverter<?>>();
@@ -27,7 +29,7 @@ public class RecipeController {
 		MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
 
 		// Note: here we are making this converter to process any kind of response,
-		// not only application/*json, which is the default behaviour
+		// not only application/*json, which is the default behavior
 		converter.setSupportedMediaTypes(Collections.singletonList(MediaType.ALL));
 		messageConverters.add(converter);
 		rt.setMessageConverters(messageConverters);
@@ -40,6 +42,8 @@ public class RecipeController {
 		return mv;
 	}
 
+	// This is the one that we're gonna use 
+	// It receives the string and returns a list of recipes 
 	@RequestMapping("/recipeSearch")
 	public ModelAndView recipeSearch(@RequestParam("ingredient") String in) {
 
