@@ -193,5 +193,239 @@
 </label>
  <input type="submit" value="Submit">
 
+
+<form action="/user_profile">
+
+<select name="Food Allergy" multiple>
+<label class="container"> Alcohol
+  <input type="checkbox" checked="checked">
+  <span class="checkmark"></span>
+</label>
+<label class="container"> Almonds
+  <input type="checkbox" checked="checked">
+  <span class="checkmark"></span>
+</label>
+<label class="container"> Avocado
+  <input type="checkbox" checked="checked">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Bacon
+  <input type="checkbox" check="checked">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Banana
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Beef
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Brazil Nuts
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Caffeine
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Cashews
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Cheese
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Chicken
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Chocolate
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Citrus
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Clams
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+</select>
+<label class="container">Cocoa
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Crab
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Crayfish
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Cream
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Citrus
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Dairy
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Eggs
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Fish
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Flour
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Fructose
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Gelatin
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Hazelnuts
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Honey
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Lamb
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Legumes
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Lemon
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Lime
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Lobster
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Macadamia Nuts
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Maple
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Marshmellow
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Meat
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Milk
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Mussels
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Nuts
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Oranges
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Oysters
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Pecans
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Pine Nuts
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Pork
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Red Dye
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Salt
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Sodium
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Soy
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Soy Sauce
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Soybean
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Steak
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Strawberry
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Sugar
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Tea
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Tomatoes
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Walnuts
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label><label class="container">Wheat
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<input type="submit">
+</form>
 </body>
 </html>
