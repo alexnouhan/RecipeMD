@@ -11,7 +11,7 @@ public class UserProfileController {
 	
 	@RequestMapping("/user_profile")
 	public ModelAndView displayUserProfile() {
-		return new ModelAndView("dropdownboxes");
+		return new ModelAndView("options");
 	}
 
 	

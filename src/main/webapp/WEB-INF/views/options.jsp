@@ -74,7 +74,7 @@
 </style>
 <body>
 
-<h1>Custom Checkboxes</h1>
+<h1>Medications</h1>
 <label class="container"> Antibiotics
   <input type="checkbox" checked="checked">
   <span class="checkmark"></span>
@@ -130,7 +130,68 @@
 <label class="container">Levothyroxine
   <input type="checkbox">
   <span class="checkmark"></span>
+</label>  <input type="submit" value="Submit">
+
+<h1>Diet Options</h1>
+<label class="container"> Ketogentic
+  <input type="checkbox" checked="checked">
+  <span class="checkmark"></span>
 </label>
+<label class="container"> Whole 30
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Paleolithic
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Vegan
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Vegetarian
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Pescatarian
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Lacto-Vegetarian
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>  <input type="submit" value="Submit">
+
+<h1>Religion Options</h1>
+<label class="container"> Judaism
+  <input type="checkbox" checked="checked">
+  <span class="checkmark"></span>
+</label>
+<label class="container"> Islam
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Hinduism
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Buddhism
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Mormonism
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Seventh-Day Adventist
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+<label class="container">RastafarianismS
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+ <input type="submit" value="Submit">
 
 </body>
 </html>
