@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 
 <html>
+<head>
 <style>
 /* The container */
 .container {
@@ -72,360 +73,364 @@
   transform: rotate(45deg);
 }
 </style>
+</head>
 <body>
 
+<form action="user_profile_submission" method="get">
 <h1>Medications</h1>
-<label class="container"> Antibiotics
-  <input type="checkbox" checked="checked">
-  <span class="checkmark"></span>
+<label class="container">Antibiotics
+<input type="checkbox" name="medications" value="Antibiotics">
+<span class="checkmark"></span>
 </label>
 <label class="container"> Oral Contraception
-  <input type="checkbox">
-  <span class="checkmark"></span>
+  <input type="checkbox" name="medications" value="Oral Contraception">
+   <span class="checkmark"></span>
 </label>
 <label class="container">Insulin
-  <input type="checkbox">
+  <input type="checkbox" name="medications" value="Insulin">
   <span class="checkmark"></span>
 </label>
 <label class="container">Statin
-  <input type="checkbox">
+  <input type="checkbox" name="medications" value="Statin">
   <span class="checkmark"></span>
 </label>
 <label class="container">Acetaminophen
-  <input type="checkbox">
+  <input type="checkbox" name="medications" value="Acetaminophen">
   <span class="checkmark"></span>
 </label>
 <label class="container">Erectile Dysfunction
-  <input type="checkbox">
+  <input type="checkbox" name="medications" value="Erectile Dysfunction">
   <span class="checkmark"></span>
 </label>
 <label class="container">Methylphenidate
-  <input type="checkbox">
+  <input type="checkbox" name="medications" value="Methylphenidate">
   <span class="checkmark"></span>
 </label>
 <label class="container">Warfarin
-  <input type="checkbox">
+  <input type="checkbox" name="medications" value="Warfarin">
   <span class="checkmark"></span>
 </label>
 <label class="container">Celiprolo
-  <input type="checkbox">
+  <input type="checkbox" name="medications" value="Celiprolo">
   <span class="checkmark"></span>
 </label>
 <label class="container">CA2 Channel
-  <input type="checkbox">
+  <input type="checkbox" name="medications" value="CA2 Channel">
   <span class="checkmark"></span>
 </label>
 <label class="container">NSAIDS
-  <input type="checkbox">
+  <input type="checkbox" name="medications" value="NSAIDS">
   <span class="checkmark"></span>
 </label>
 <label class="container">Mercaptopurine
-  <input type="checkbox">
+  <input type="checkbox" name="medications" value="Mercaptopurine">
   <span class="checkmark"></span>
 </label>
 <label class="container">Tamoxifen
-  <input type="checkbox">
+  <input type="checkbox" name="medications" value="Tamoxifen">
   <span class="checkmark"></span>
 </label>
 <label class="container">Levothyroxine
-  <input type="checkbox">
+  <input type="checkbox" name="medications" value="Levothyroxine">
   <span class="checkmark"></span>
-</label>  <input type="submit" value="Submit">
+</label> 
+
+
 
 <h1>Diet Options</h1>
 <label class="container"> Ketogentic
-  <input type="checkbox" checked="checked">
+  <input type="checkbox" name="Diet_Options" value="Ketogentic">
   <span class="checkmark"></span>
 </label>
 <label class="container"> Whole 30
-  <input type="checkbox">
+  <input type="checkbox" name="Diet_Options" value="Ketogentic">
   <span class="checkmark"></span>
 </label>
 <label class="container">Paleolithic
-  <input type="checkbox">
+  <input type="checkbox" name="Diet_Options" value="Paleolithic">
   <span class="checkmark"></span>
 </label>
 <label class="container">Vegan
-  <input type="checkbox">
+  <input type="checkbox" name="Diet_Options" value="Vegan">
   <span class="checkmark"></span>
 </label>
 <label class="container">Vegetarian
-  <input type="checkbox">
+  <input type="checkbox" name="Diet_Options" value="Vegetarian">
   <span class="checkmark"></span>
 </label>
 <label class="container">Pescatarian
-  <input type="checkbox">
+  <input type="checkbox" name="Diet_Options" value="Pescatarian">
   <span class="checkmark"></span>
 </label>
 <label class="container">Lacto-Vegetarian
-  <input type="checkbox">
+  <input type="checkbox" name="Diet_Options" value="Lacto-Vegetarian">
   <span class="checkmark"></span>
-</label>  <input type="submit" value="Submit">
+</label> 
+
 
 <h1>Religion Options</h1>
 <label class="container"> Judaism
-  <input type="checkbox" checked="checked">
+  <input type="checkbox" name="Religion_Options" value="Judaism">
   <span class="checkmark"></span>
 </label>
 <label class="container"> Islam
-  <input type="checkbox">
+  <input type="checkbox" name="Religion_Options" value="Islam">
   <span class="checkmark"></span>
 </label>
 <label class="container">Hinduism
-  <input type="checkbox">
+  <input type="checkbox" name="Religion_Options" value="Hinduism">
   <span class="checkmark"></span>
 </label>
 <label class="container">Buddhism
-  <input type="checkbox">
+  <input type="checkbox" name="Religion_Options" value="Buddhism">
   <span class="checkmark"></span>
 </label>
 <label class="container">Mormonism
-  <input type="checkbox">
+  <input type="checkbox" name="Religion_Options" value="Mormonism">
   <span class="checkmark"></span>
 </label>
 <label class="container">Seventh-Day Adventist
-  <input type="checkbox">
+  <input type="checkbox" name="Religion_Options" value="Seventh-Day Adventist">
   <span class="checkmark"></span>
 </label>
-<label class="container">RastafarianismS
-  <input type="checkbox">
+<label class="container">Rastafarianism
+  <input type="checkbox" name="Religion_Options" value="Rastafarianism">
   <span class="checkmark"></span>
 </label>
- <input type="submit" value="Submit">
+ 
 
 
-<form action="/user_profile">
 
-<select name="Food Allergy" multiple>
+
+<h1>Food Allergies</h1>
 <label class="container"> Alcohol
-  <input type="checkbox" checked="checked">
+  <input type="checkbox" name="Food_Allergies" value="Alcohol">
   <span class="checkmark"></span>
 </label>
 <label class="container"> Almonds
-  <input type="checkbox" checked="checked">
+  <input type="checkbox" name="Food_Allergies" value="Almonds">
   <span class="checkmark"></span>
 </label>
 <label class="container"> Avocado
-  <input type="checkbox" checked="checked">
+  <input type="checkbox" name="Food_Allergies" value="Avocado">
   <span class="checkmark"></span>
 </label>
 <label class="container">Bacon
-  <input type="checkbox" check="checked">
+  <input type="checkbox" name="Food_Allergies" value="Bacon">
   <span class="checkmark"></span>
 </label>
 <label class="container">Banana
-  <input type="checkbox">
+  <input type="checkbox" name="Food_Allergies" value="Banana">
   <span class="checkmark"></span>
 </label>
 <label class="container">Beef
-  <input type="checkbox">
+  <input type="checkbox" name="Food_Allergies" value="Beef">
   <span class="checkmark"></span>
 </label>
 <label class="container">Brazil Nuts
-  <input type="checkbox">
+  <input type="checkbox" name="Food_Allergies" value="Brazil Nuts">
   <span class="checkmark"></span>
 </label>
 <label class="container">Caffeine
-  <input type="checkbox">
+  <input type="checkbox" name="Food_Allergies" value="Caffeine">
   <span class="checkmark"></span>
 </label>
 <label class="container">Cashews
-  <input type="checkbox">
+  <input type="checkbox" name="Food_Allergies" value="Cashews">
   <span class="checkmark"></span>
 </label>
 <label class="container">Cheese
-  <input type="checkbox">
+  <input type="checkbox" name="Food_Allergies" value="Cheese">
   <span class="checkmark"></span>
 </label>
 <label class="container">Chicken
-  <input type="checkbox">
+  <input type="checkbox" name="Food_Allergies" value="Chicken">
   <span class="checkmark"></span>
 </label>
 <label class="container">Chocolate
-  <input type="checkbox">
+  <input type="checkbox" name="Food_Allergies" value="Chocolate">
   <span class="checkmark"></span>
 </label>
 <label class="container">Citrus
-  <input type="checkbox">
+  <input type="checkbox" name="Food_Allergies" value="Citrus">
   <span class="checkmark"></span>
 </label>
 <label class="container">Clams
-  <input type="checkbox">
+  <input type="checkbox" name="Food_Allergies" value="Clams">
   <span class="checkmark"></span>
 </label>
-</select>
 <label class="container">Cocoa
-  <input type="checkbox">
+  <input type="checkbox" name="Food_Allergies" value="Cocoa">
   <span class="checkmark"></span>
 </label>
 <label class="container">Crab
-  <input type="checkbox">
+  <input type="checkbox" name="Food_Allergies" value="Crab">
   <span class="checkmark"></span>
 </label>
 <label class="container">Crayfish
-  <input type="checkbox">
+  <input type="checkbox" name="Food_Allergies" value="Crayfish">
   <span class="checkmark"></span>
 </label>
 <label class="container">Cream
-  <input type="checkbox">
-  <span class="checkmark"></span>
-</label>
-<label class="container">Citrus
-  <input type="checkbox">
+  <input type="checkbox" name="Food_Allergies" value="Cream">
   <span class="checkmark"></span>
 </label>
 <label class="container">Dairy
-  <input type="checkbox">
+  <input type="checkbox" name="Food_Allergies" value="Dairy">
+  <span class="checkmark"></span>
+</label>
+<label class="container">Egg
+  <input type="checkbox" name="Food_Allergies" value="Egg">
   <span class="checkmark"></span>
 </label>
 <label class="container">Eggs
-  <input type="checkbox">
+  <input type="checkbox" name="Food_Allergies" value="Eggs">
   <span class="checkmark"></span>
 </label>
 <label class="container">Fish
-  <input type="checkbox">
+  <input type="checkbox" name="Food_Allergies" value="Fish">
   <span class="checkmark"></span>
 </label>
 <label class="container">Flour
-  <input type="checkbox">
+  <input type="checkbox" name="Food_Allergies" value="Flour">
   <span class="checkmark"></span>
 </label>
 <label class="container">Fructose
-  <input type="checkbox">
+  <input type="checkbox" name="Food_Allergies" value="Fructose">
   <span class="checkmark"></span>
 </label>
 <label class="container">Gelatin
-  <input type="checkbox">
+  <input type="checkbox" name="Food_Allergies" value="Gelatin">
   <span class="checkmark"></span>
 </label>
 <label class="container">Hazelnuts
-  <input type="checkbox">
+  <input type="checkbox" name="Food_Allergies" value="Hazelnuts">
   <span class="checkmark"></span>
 </label>
 <label class="container">Honey
-  <input type="checkbox">
+  <input type="checkbox" name="Food_Allergies" value="Honey">
   <span class="checkmark"></span>
 </label>
 <label class="container">Lamb
-  <input type="checkbox">
+  <input type="checkbox" name="Food_Allergies" value="Lamb">
   <span class="checkmark"></span>
 </label>
 <label class="container">Legumes
-  <input type="checkbox">
+  <input type="checkbox" name="Food_Allergies" value="Legumes">
   <span class="checkmark"></span>
 </label>
 <label class="container">Lemon
-  <input type="checkbox">
+  <input type="checkbox" name="Food_Allergies" value="Lemon">
   <span class="checkmark"></span>
 </label>
 <label class="container">Lime
-  <input type="checkbox">
+  <input type="checkbox" name="Food_Allergies" value="Lime">
   <span class="checkmark"></span>
 </label>
 <label class="container">Lobster
-  <input type="checkbox">
+  <input type="checkbox" name="Food_Allergies" value="Lobster">
   <span class="checkmark"></span>
 </label>
 <label class="container">Macadamia Nuts
-  <input type="checkbox">
+  <input type="checkbox" name="Food_Allergies" value="Macadamia Nuts">
   <span class="checkmark"></span>
 </label>
 <label class="container">Maple
-  <input type="checkbox">
+  <input type="checkbox" name="Food_Allergies" value="Maple">
   <span class="checkmark"></span>
 </label>
 <label class="container">Marshmellow
-  <input type="checkbox">
+  <input type="checkbox" name="Food_Allergies" value="Marshmellow">
   <span class="checkmark"></span>
 </label>
 <label class="container">Meat
-  <input type="checkbox">
+  <input type="checkbox" name="Food_Allergies" value="Meat">
   <span class="checkmark"></span>
 </label>
 <label class="container">Milk
-  <input type="checkbox">
+  <input type="checkbox" name="Food_Allergies" value="Milk">
   <span class="checkmark"></span>
 </label>
 <label class="container">Mussels
-  <input type="checkbox">
+  <input type="checkbox" name="Food_Allergies" value="Mussels">
   <span class="checkmark"></span>
 </label>
 <label class="container">Nuts
-  <input type="checkbox">
+  <input type="checkbox" name="Food_Allergies" value="Nuts">
   <span class="checkmark"></span>
 </label>
 <label class="container">Oranges
-  <input type="checkbox">
+  <input type="checkbox" name="Food_Allergies" value="Oranges">
   <span class="checkmark"></span>
 </label>
 <label class="container">Oysters
-  <input type="checkbox">
+  <input type="checkbox" name="Food_Allergies" value="Oysters">
   <span class="checkmark"></span>
 </label>
 <label class="container">Pecans
-  <input type="checkbox">
+  <input type="checkbox" name="Food_Allergies" value="Pecans">
   <span class="checkmark"></span>
 </label>
 <label class="container">Pine Nuts
-  <input type="checkbox">
+  <input type="checkbox" name="Food_Allergies" value="Pine Nuts">
   <span class="checkmark"></span>
 </label>
 <label class="container">Pork
-  <input type="checkbox">
+  <input type="checkbox" name="Food_Allergies" value="Pork">
   <span class="checkmark"></span>
 </label>
 <label class="container">Red Dye
-  <input type="checkbox">
+  <input type="checkbox" name="Food_Allergies" value="Red Dye">
   <span class="checkmark"></span>
 </label>
 <label class="container">Salt
-  <input type="checkbox">
+  <input type="checkbox" name="Food_Allergies" value="Salt">
   <span class="checkmark"></span>
 </label>
 <label class="container">Sodium
-  <input type="checkbox">
+  <input type="checkbox" name="Food_Allergies" value="Sodium">
   <span class="checkmark"></span>
 </label>
 <label class="container">Soy
-  <input type="checkbox">
+  <input type="checkbox" name="Food_Allergies" value="Soy">
   <span class="checkmark"></span>
 </label>
 <label class="container">Soy Sauce
-  <input type="checkbox">
+  <input type="checkbox" name="Food_Allergies" value="Soy Sauce">
   <span class="checkmark"></span>
 </label>
 <label class="container">Soybean
-  <input type="checkbox">
+  <input type="checkbox" name="Food_Allergies" value="Soybean">
   <span class="checkmark"></span>
 </label>
 <label class="container">Steak
-  <input type="checkbox">
+  <input type="checkbox" name="Food_Allergies" value="Steak">
   <span class="checkmark"></span>
 </label>
 <label class="container">Strawberry
-  <input type="checkbox">
+  <input type="checkbox" name="Food_Allergies" value="Strawberry">
   <span class="checkmark"></span>
 </label>
 <label class="container">Sugar
-  <input type="checkbox">
+  <input type="checkbox" name="Food_Allergies" value="Sugar">
   <span class="checkmark"></span>
 </label>
 <label class="container">Tea
-  <input type="checkbox">
+  <input type="checkbox" name="Food_Allergies" value="Tea">
   <span class="checkmark"></span>
 </label>
 <label class="container">Tomatoes
-  <input type="checkbox">
+  <input type="checkbox" name="Food_Allergies" value="Tomatoes">
   <span class="checkmark"></span>
 </label>
 <label class="container">Walnuts
-  <input type="checkbox">
+  <input type="checkbox" name="Food_Allergies" value="Walnuts">
   <span class="checkmark"></span>
 </label><label class="container">Wheat
-  <input type="checkbox">
+  <input type="checkbox" name="Food_Allergies" value="Wheat">
   <span class="checkmark"></span>
 </label>
-<input type="submit">
+<input type="submit" value="Submit">
 </form>
 </body>
 </html>
