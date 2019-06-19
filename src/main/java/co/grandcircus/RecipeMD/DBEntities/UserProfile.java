@@ -24,6 +24,11 @@ public class UserProfile {
 		this.id = id;
 		this.email = email;
 	}
+	
+	public UserProfile(String email) {
+		super();
+		this.email = email;
+	}
 
 	public Integer getId() {
 		return id;

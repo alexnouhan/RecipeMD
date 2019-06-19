@@ -10,7 +10,6 @@ public class Restrictions {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-
 	private Integer id;
 	private String name;
 	private String email;
@@ -24,6 +23,13 @@ public class Restrictions {
 	public Restrictions(Integer id, String name, String email, String category) {
 		super();
 		this.id = id;
+		this.name = name;
+		this.email = email;
+		this.category = category;
+	}
+	
+	public Restrictions(String name, String email, String category) {
+		super();
 		this.name = name;
 		this.email = email;
 		this.category = category;
