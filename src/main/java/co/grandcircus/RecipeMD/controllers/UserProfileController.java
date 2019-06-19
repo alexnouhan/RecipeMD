@@ -1,5 +1,6 @@
 package co.grandcircus.RecipeMD.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,15 +21,23 @@ public class UserProfileController {
 	@Autowired
 	RestrictionsRepo r;
 
-	public UserProfile up = new UserProfile("example@test.net");
+	public UserProfile up = new UserProfile("email@test.com");
 
 	@RequestMapping("/user_profile")
 	public ModelAndView displayUserProfile() {
 
-		List<Restrictions> userRestrictions = r.findByEmail(up.getEmail());
-		System.out.println(userRestrictions);
+		List<Restrictions> ur = r.findByEmail(up.getEmail());
+		System.out.println(ur);
+		
+		ArrayList<String> urs = new ArrayList<>();
+		System.out.println(urs);
+		System.out.println(urs.contains("Alcohol"));
 
-		return new ModelAndView("options");
+		for (Restrictions i : ur) {
+			urs.add(i.getName());
+		}
+
+		return new ModelAndView("options", "res", urs);
 	}
 
 //	@RequestMapping("/user_profile_submission")
@@ -44,18 +53,21 @@ public class UserProfileController {
 			@RequestParam(name = "medications", required = false) List<String> Medications,
 			@RequestParam(name = "Diet_Options", required = false) List<String> Diet_Options,
 			@RequestParam(name = "Religion_Options", required = false) List<String> Religion_Options,
-			@RequestParam(name = "Allergies", required = false) List<String> Allergies) {
+			@RequestParam(name = "Food_Allergies", required = false) List<String> Allergies) {
 
-		List<Restrictions> userRestrictions = r.findByEmail(up.getEmail());
-		System.out.println(userRestrictions);
-		
-		
-		
+		List<Restrictions> ur = r.findByEmail(up.getEmail());
+		List<String> urs = new ArrayList<>();
+
+		for (Restrictions i : ur) {
+			urs.add(i.getName());
+		}
+
 		try {
 			for (String e : Medications) {
-				Restrictions tempr = new Restrictions(e, up.getEmail(), "Medication");
-				
-				r.save(tempr);
+				if (!urs.contains(e)) {
+					Restrictions tempr = new Restrictions(e, up.getEmail(), "Medication");
+					r.save(tempr);
+				}
 			}
 		} catch (NullPointerException e) {
 
@@ -64,8 +76,10 @@ public class UserProfileController {
 		try {
 			if (!Diet_Options.isEmpty()) {
 				for (String e : Diet_Options) {
-					Restrictions tempr = new Restrictions(e, "email@test.com", "Diet");
-					r.save(tempr);
+					if (!urs.contains(e)) {
+						Restrictions tempr = new Restrictions(e, up.getEmail(), "Diet");
+						r.save(tempr);
+					}
 				}
 			}
 		} catch (NullPointerException e) {
@@ -75,8 +89,10 @@ public class UserProfileController {
 		try {
 			if (!Religion_Options.isEmpty()) {
 				for (String e : Religion_Options) {
-					Restrictions tempr = new Restrictions(e, "email@test.com", "Religion");
-					r.save(tempr);
+					if (!urs.contains(e)) {
+						Restrictions tempr = new Restrictions(e, up.getEmail(), "Religion");
+						r.save(tempr);
+					}
 				}
 			}
 		} catch (NullPointerException e) {
@@ -86,8 +102,10 @@ public class UserProfileController {
 		try {
 			if (!Allergies.isEmpty()) {
 				for (String e : Allergies) {
-					Restrictions tempr = new Restrictions(e, "email@test.com", "Allergies");
-					r.save(tempr);
+					if (!urs.contains(e)) {
+						Restrictions tempr = new Restrictions(e, up.getEmail(), "Allergies");
+						r.save(tempr);
+					}
 				}
 			}
 		} catch (NullPointerException e) {

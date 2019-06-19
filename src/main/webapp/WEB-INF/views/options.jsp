@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 
 <html>
@@ -203,8 +204,11 @@
 
 
 <h1>Food Allergies</h1>
+
+<c:set var="resname" value="${res }"/>
+
 <label class="container"> Alcohol
-  <input type="checkbox" name="Food_Allergies" value="Alcohol">
+  <input type="checkbox" name="Food_Allergies" value="Alcohol" <c:if test="${resname.contains('Alcohol')}">checked</c:if>>
   <span class="checkmark"></span>
 </label>
 <label class="container"> Almonds
