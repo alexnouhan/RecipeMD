@@ -78,6 +78,7 @@
 <body>
 
 <form action="user_profile_submission" method="get">
+<!--  
 <h1>Medications</h1>
 <label class="container">Antibiotics
 <input type="checkbox" name="medications" value="Antibiotics">
@@ -202,10 +203,23 @@
 
 
 
-
+-->
 <h1>Food Allergies</h1>
 
 <c:set var="resname" value="${res }"/>
+
+<c:forEach var="i" items="${allAllergies }">
+
+<c:set var="j" value="resname.contains('${i }')"/>
+
+<label class="container"> ${i }
+  <input type="checkbox" name="Food_Allergies" value="${i }" <c:if test="${j}">checked</c:if>>
+  <span class="checkmark"></span>
+</label>
+
+</c:forEach>
+
+<!--  
 
 <label class="container"> Alcohol
   <input type="checkbox" name="Food_Allergies" value="Alcohol" <c:if test="${resname.contains('Alcohol')}">checked</c:if>>
@@ -434,6 +448,9 @@
   <input type="checkbox" name="Food_Allergies" value="Wheat">
   <span class="checkmark"></span>
 </label>
+
+-->
+
 <input type="submit" value="Submit">
 </form>
 </body>

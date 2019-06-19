@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
+import co.grandcircus.RecipeMD.DBEntities.All_Restrictions;
 import co.grandcircus.RecipeMD.DBEntities.Restrictions;
 import co.grandcircus.RecipeMD.DBEntities.UserProfile;
+import co.grandcircus.RecipeMD.Repo.All_RestrictionsRepo;
 import co.grandcircus.RecipeMD.Repo.RestrictionsRepo;
 
 @Controller
@@ -21,32 +23,33 @@ public class UserProfileController {
 	@Autowired
 	RestrictionsRepo r;
 
+	@Autowired
+	All_RestrictionsRepo a;
+
 	public UserProfile up = new UserProfile("email@test.com");
 
 	@RequestMapping("/user_profile")
 	public ModelAndView displayUserProfile() {
 
 		List<Restrictions> ur = r.findByEmail(up.getEmail());
-		System.out.println(ur);
-		
 		ArrayList<String> urs = new ArrayList<>();
-		System.out.println(urs);
-		System.out.println(urs.contains("Alcohol"));
 
 		for (Restrictions i : ur) {
 			urs.add(i.getName());
 		}
 
-		return new ModelAndView("options", "res", urs);
+		List<All_Restrictions> ua_r = a.findAll(); 
+		List<String> ua_rs = new ArrayList<>();
+		
+		for (All_Restrictions i : ua_r) {
+			ua_rs.add(i.getRestriction());
+		}
+		
+		ModelAndView mv = new ModelAndView("options", "res", urs);
+		mv.addObject("allAllergies", ua_rs);
+		return mv;
 	}
-
-//	@RequestMapping("/user_profile_submission")
-//	public ModelAndView userProfileSubmission(@RequestParam(name="medications", required = false) String medications, @RequestParam(name="Diet_Options", required = false) String Diet_Options, @RequestParam(name="Religion_Options", required = false) String Religion_Options) {
-//		// check to make sure they're not empty
-//		// if not empty split based on the , for each category and assign to an array
-//		System.out.println(medications);
-//		return new ModelAndView("options");
-//	}
+	
 
 	@RequestMapping("/user_profile_submission")
 	public ModelAndView userProfileSubmission(
@@ -62,6 +65,13 @@ public class UserProfileController {
 			urs.add(i.getName());
 		}
 
+		List<All_Restrictions> ua_r = a.findAll(); 
+		List<String> ua_rs = new ArrayList<>();
+		
+		for (All_Restrictions i : ua_r) {
+			ua_rs.add(i.getRestriction());
+		}
+		
 		try {
 			for (String e : Medications) {
 				if (!urs.contains(e)) {
@@ -112,7 +122,9 @@ public class UserProfileController {
 
 		}
 
-		return new ModelAndView("options");
+		ModelAndView mv = new ModelAndView("options", "res", urs);
+		mv.addObject("allAllergies", ua_rs);
+		return mv;
 	}
 
 }
