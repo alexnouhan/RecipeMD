@@ -25,7 +25,7 @@ public class OpenFoodApiController {
 		
 		Results openFoodAPI = rt.getForObject("https://world.openfoodfacts.org/api/v0/product/0737628064502.json", Results.class);
 		
-		ModelAndView mv = new ModelAndView("index", "list", openFoodAPI.getProduct().getIngredients());
+		ModelAndView mv = new ModelAndView("ingredients", "list", openFoodAPI.getProduct().getIngredients());
 		mv.addObject("name", openFoodAPI.getProduct().getProduct_name_en());
 		mv.addObject("allergens", openFoodAPI.getProduct().getAllergens_from_ingredients());
 		
@@ -39,7 +39,7 @@ public class OpenFoodApiController {
 		
 		Results openFoodAPI = rt.getForObject("https://world.openfoodfacts.org/api/v0/product/"+ b + ".json", Results.class);
 		
-		ModelAndView mv = new ModelAndView("index", "list", openFoodAPI.getProduct().getIngredients());
+		ModelAndView mv = new ModelAndView("ingredients", "list", openFoodAPI.getProduct().getIngredients());
 		mv.addObject("name", openFoodAPI.getProduct().getProduct_name_en());
 		mv.addObject("allergens", openFoodAPI.getProduct().getAllergens_from_ingredients());
 		
