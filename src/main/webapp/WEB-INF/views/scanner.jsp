@@ -16,13 +16,9 @@
       <section>
 
 <section id="container" class="container">
-    <div class="controls">
-        <fieldset class="input-group">
-            <button class="stop">Stop</button>
-        </fieldset>
+    <div class="controls" style="display: none">
         <fieldset class="reader-config-group">
             <label>
-                <span>Barcode-Type</span>
                 <select name="decoder_readers">
                     <option value="code_128">Code 128</option>
                     <option value="code_39">Code 39</option>
