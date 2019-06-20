@@ -20,7 +20,7 @@
 				<c:forEach var="f" items="${list}">
 					<tr>
 						<td><a href="${f.href}">${f.title}</a></td>
-						<td><img src="${f.thumbnail}"></td>
+						<td><a href="${f.href}"><img src="${f.thumbnail}"></a></td>
 					</tr>
 			
 				</c:forEach>

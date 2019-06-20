@@ -56,4 +56,5 @@ public class Recipe {
 		this.thumbnail = thumbnail;
 	}
 
+	
 }
