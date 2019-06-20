@@ -19,8 +19,10 @@
 			<tbody>
 				<c:forEach var="f" items="${list}">
 					<tr>
-						<td>${f.title}</td>
+						<td><a href="${f.href}">${f.title}</a></td>
+						<td><img src="${f.thumbnail}"></td>
 					</tr>
+			
 				</c:forEach>
 			</tbody>
 		</table>
