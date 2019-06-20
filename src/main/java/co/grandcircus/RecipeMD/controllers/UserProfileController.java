@@ -22,7 +22,7 @@ import co.grandcircus.RecipeMD.Repo.RestrictionsRepo;
 public class UserProfileController {
 	RestTemplate rt = new RestTemplate();
 
-	// Automatic injection of POJOs 
+	// Automatic injection of POJOs
 	@Autowired
 	RestrictionsRepo r;
 
@@ -34,70 +34,72 @@ public class UserProfileController {
 	@RequestMapping("/user_profile")
 	public ModelAndView displayUserProfile() {
 
-		//SQL query in all ingredient restrictions for the current user and copy to STRING list
+		// SQL query in all ingredient restrictions for the current user and copy to
+		// STRING list
 		List<Restrictions> userRestrictions = r.findByEmail(up.getEmail());
 		ArrayList<String> urs = new ArrayList<>();
 		for (Restrictions i : userRestrictions) {
 			urs.add(i.getName());
 		}
 
-		//SQL query list of ALL RESTRICTIONS and copy to STRING list
+		// SQL query list of ALL RESTRICTIONS and copy to STRING list
 		List<All_Restrictions> ua_r = a.findAll();
-		
+
 		List<String> ua_rs = new ArrayList<>();
-		
+
 		for (All_Restrictions i : ua_r) {
 			ua_rs.add(i.getRestriction());
 		}
-		
-		//alphabetize ua_rs here
+
+		// alphabetize ua_rs here
 		ua_rs.sort(String.CASE_INSENSITIVE_ORDER);
-		
-		//SQL query of all custom allergens for current user
+
+		// SQL query of all custom allergens for current user
 		List<Restrictions> cr = r.findByEmailAndCategory(up.getEmail(), "Custom");
-		
+
 		ArrayList<String> crs = new ArrayList<>();
-		
+
 		for (Restrictions i : cr) {
 			crs.add(i.getName());
 		}
-		
-		//alphabetize crs here
+
+		// alphabetize crs here
 		crs.sort(String.CASE_INSENSITIVE_ORDER);
-		
+
 		ModelAndView mv = new ModelAndView("options", "res", urs);
 		mv.addObject("allAllergies", ua_rs);
 		mv.addObject("customAllergies", crs);
 		return mv;
 	}
-	
 
 	@RequestMapping("/user_profile_submission")
 	public ModelAndView userProfileSubmission(
 			@RequestParam(name = "medications", required = false) List<String> Medications,
 			@RequestParam(name = "Diet_Options", required = false) List<String> Diet_Options,
 			@RequestParam(name = "Religion_Options", required = false) List<String> Religion_Options,
-			@RequestParam(name = "Food_Allergies", required = false) List<String> Allergies, 
+			@RequestParam(name = "Food_Allergies", required = false) List<String> Allergies,
 			@RequestParam(name = "Custom_Allergies", required = false) List<String> Custom) {
 
-		//SQL query in all ingredient restrictions for the current user and copy to STRING list
+		// SQL query in all ingredient restrictions for the current user and copy to
+		// STRING list
 		List<Restrictions> userRestrictions = r.findByEmail(up.getEmail());
 		List<String> urs = new ArrayList<>();
 		for (Restrictions i : userRestrictions) {
 			urs.add(i.getName());
 		}
 
-		//SQL query list of ALL RESTRICTIONS and copy to STRING list
-		List<All_Restrictions> ua_r = a.findAll(); 
-		List<String> ua_rs = new ArrayList<>();		
+		// SQL query list of ALL RESTRICTIONS and copy to STRING list
+		List<All_Restrictions> ua_r = a.findAll();
+		List<String> ua_rs = new ArrayList<>();
 		for (All_Restrictions i : ua_r) {
 			ua_rs.add(i.getRestriction());
 		}
-		
-		//Initialize temp list of new selections
+
+		// Initialize temp list of new selections
 		List<Restrictions> save = new ArrayList<>();
-		
-		//blocks of comparison for each category against the existing SQL user restrictions list
+
+		// blocks of comparison for each category against the existing SQL user
+		// restrictions list
 		//
 		try {
 			for (String s : Medications) {
@@ -131,42 +133,45 @@ public class UserProfileController {
 			if (!Allergies.isEmpty()) {
 				for (String s : Allergies) {
 					save.add(new Restrictions(s, up.getEmail(), "Allergies"));
-					}
 				}
+			}
 		} catch (NullPointerException e) {
 
 		}
-		
+
 		try {
 			if (!Custom.isEmpty()) {
 				for (String s : Custom) {
-					save.add(new Restrictions(s, up.getEmail(), "Custom"));
+					if (s.isBlank()) {
+
+					} else {
+						save.add(new Restrictions(s, up.getEmail(), "Custom"));
 					}
 				}
+			}
 		} catch (NullPointerException e) {
 
 		}
-		
-		//compare JSP page list with SQL table list and remove overlap
+
+		// compare JSP page list with SQL table list and remove overlap
 		for (Restrictions i : userRestrictions) {
-			 if (save.contains(i)) {
-				 userRestrictions.remove(i);
-			 }
+			if (save.contains(i)) {
+				userRestrictions.remove(i);
+			}
 		}
-		
-		//clean out SQL table
+
+		// clean out SQL table
 		r.deleteAll(userRestrictions);
-		//write new selections to SQL table
+		// write new selections to SQL table
 		r.saveAll(save);
 
 		return new ModelAndView("redirect:user_profile");
 	}
-	
-	
-	//this is for the button to return to the home page
+
+	// this is for the button to return to the home page
 	@RequestMapping("/leave_user_profile")
 	public ModelAndView leaveUserProfile() {
-					return new ModelAndView("index");
+		return new ModelAndView("index");
 	}
 
 }

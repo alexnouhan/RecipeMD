@@ -81,15 +81,16 @@ public class RecipeController {
 		RecipePuppy response3 = rt.getForObject("http://www.recipepuppy.com/api/?q=" + in + "&p=3", RecipePuppy.class);
 
 		List<Recipe> list = new ArrayList<>();
+		
 
 		for (Recipe i : response.getResults()) {
+			
 			if (urs.isEmpty()) {
 				list.add(i);
 			} else {
 				for (String j : urs) {
 					if (i.getIngredients().toLowerCase().contains(j)) {
 					} else {
-						list.add(i);
 					}
 				}
 			}

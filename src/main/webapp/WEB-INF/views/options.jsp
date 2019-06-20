@@ -230,10 +230,11 @@
 
 </c:forEach>
 
-<input type= "text" name = "Custom_Allergies"> <br>
+<input type= "text" name = "Custom_Allergies">
 
 <input type="submit" value="Submit">
 </form>
+
 
 </body>
 </html>
