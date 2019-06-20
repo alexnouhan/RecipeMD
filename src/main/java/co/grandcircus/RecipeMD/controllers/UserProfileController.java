@@ -78,11 +78,8 @@ public class UserProfileController {
 		//blocks of comparison for each category against the existing SQL user restrictions list
 		//
 		try {
-			for (String e : Medications) {
-				if (!urs.contains(e)) {
-					Restrictions tempr = new Restrictions(e, up.getEmail(), "Medication");
-					r.save(tempr);
-				}
+			for (String s : Medications) {
+				save.add(new Restrictions(s, up.getEmail(), "Medication"));
 			}
 		} catch (NullPointerException e) {
 
@@ -90,11 +87,8 @@ public class UserProfileController {
 
 		try {
 			if (!Diet_Options.isEmpty()) {
-				for (String e : Diet_Options) {
-					if (!urs.contains(e)) {
-						Restrictions tempr = new Restrictions(e, up.getEmail(), "Diet");
-						r.save(tempr);
-					}
+				for (String s : Diet_Options) {
+					save.add(new Restrictions(s, up.getEmail(), "Diet"));
 				}
 			}
 		} catch (NullPointerException e) {
@@ -103,11 +97,8 @@ public class UserProfileController {
 
 		try {
 			if (!Religion_Options.isEmpty()) {
-				for (String e : Religion_Options) {
-					if (!urs.contains(e)) {
-						Restrictions tempr = new Restrictions(e, up.getEmail(), "Religion");
-						r.save(tempr);
-					}
+				for (String s : Religion_Options) {
+					save.add(new Restrictions(s, up.getEmail(), "Religion"));
 				}
 			}
 		} catch (NullPointerException e) {
@@ -116,14 +107,10 @@ public class UserProfileController {
 
 		try {
 			if (!Allergies.isEmpty()) {
-				for (String e : Allergies) {
-					if (!urs.contains(e)) {
-						//Restrictions tempr = new Restrictions(e, up.getEmail(), "Allergies");
-						save.add(new Restrictions(e, up.getEmail(), "Allergies"));
-						//r.save(tempr);
+				for (String s : Allergies) {
+					save.add(new Restrictions(s, up.getEmail(), "Allergies"));
 					}
 				}
-			}
 		} catch (NullPointerException e) {
 
 		}
