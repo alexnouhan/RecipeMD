@@ -3,6 +3,7 @@ package co.grandcircus.RecipeMD.controllers;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -89,8 +90,9 @@ public class RecipeController {
 				list.add(i);
 			} else {
 				for (String j : urs) {
-					if (i.getIngredients().toLowerCase().contains(j)) {
+					if (i.getIngredients().toLowerCase().contains(j) | i.getThumbnail().isBlank()) {
 					} else {
+						list.add(i);
 					}
 				}
 			}
@@ -101,7 +103,7 @@ public class RecipeController {
 				list.add(i);
 			} else {
 				for (String j : urs) {
-					if (i.getIngredients().toLowerCase().contains(j)) {
+					if (i.getIngredients().toLowerCase().contains(j) | i.getThumbnail().isBlank()) {
 					} else {
 						list.add(i);
 					}
@@ -114,7 +116,7 @@ public class RecipeController {
 				list.add(i);
 			} else {
 				for (String j : urs) {
-					if (i.getIngredients().toLowerCase().contains(j)) {
+					if (i.getIngredients().toLowerCase().contains(j) | i.getThumbnail().isBlank()) {
 					} else {
 						list.add(i);
 					}
@@ -123,7 +125,7 @@ public class RecipeController {
 		}
 
 		ModelAndView mv = new ModelAndView("/recipes");
-		mv.addObject("list", list);
+		mv.addObject("list", list.stream().distinct().collect(Collectors.toList()));
 
 		return mv;
 	}
