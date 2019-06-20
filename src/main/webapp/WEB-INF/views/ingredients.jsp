@@ -13,7 +13,7 @@
 
 	<h1>Manual Barcode Scanner</h1>
 	<div class="container">
-		<form name = "barcode" form action="/search" method="post" onsubmit="allergyAlert()">
+		<form name = "barcode" action="/search"  method="post" onsubmit="allergyAlert()">
 			Input Barcode Code:
 			<input type="text" name="barcode" value="${barcode }">
 			<input type="submit" value="Submit">		
@@ -29,9 +29,14 @@
 			
 			var r = `recipeSearch?ingredient=${name}`
 			var redlight = `${redlight}`
-			
+			var s = `scanner`
 			if(redlight) {
-				alert('WARNING! This food item contians some of your selected allergens.');
+			if(	window.confirm('WARNING! This food item contians some of your selected allergens. Click Okay to scan again or click cancel to return home page')){
+				window.open("scanner");
+			} else {
+				window.open("/")
+			}
+			
 			} else {
 			
 			if(window.confirm('Thumbs Up! This food does not contain any of your selected allergens! Click OK to see a list of recipes for this item or CANCEL to return home.')){

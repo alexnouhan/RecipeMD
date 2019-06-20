@@ -35,7 +35,7 @@ public class OpenFoodApiController {
 		List<Restrictions> ur = r.findByEmail(UserProfileController.up.getEmail());
 		ArrayList<String> urs = new ArrayList<>();
 		for (Restrictions i : ur) {
-			urs.add(i.getName());
+			urs.add(i.getName().toLowerCase());
 		}
 
 		Results openFoodAPI = rt.getForObject("https://world.openfoodfacts.org/api/v0/product/0737628064502.json",
@@ -46,21 +46,23 @@ public class OpenFoodApiController {
 		mv.addObject("allergens", openFoodAPI.getProduct().getAllergens_from_ingredients());
 		mv.addObject("barcode", "0737628064502");
 
+		// Connecting the restriction database for the current use to the allergen search result
 		String[] allergens = openFoodAPI.getProduct().getAllergens_from_ingredients().split(",");
 
 		for (String i : allergens) {
-			if (urs.contains(i)) {
+			if (urs.contains(i.toLowerCase())) {
 				mv.addObject("redlight", true);
 			}
+			System.out.println(i);
 		}
-
+System.out.println(urs);
 		return mv;
 	}
 
 	// Our search method -- returns an index with list of ingredients, allergens and
 	// name of product
-	// This mapping is called by the scanner JSP and dispalys the item based on the
-	// scanned barcode
+	// This mapping is called by the scanner JSP and displays the item based on the
+	// scanned bar code
 	@RequestMapping("/search")
 	public ModelAndView searchBarcode(@RequestParam("barcode") String b) {
 
@@ -69,9 +71,9 @@ public class OpenFoodApiController {
 		List<Restrictions> ur = r.findByEmail(UserProfileController.up.getEmail());
 		ArrayList<String> urs = new ArrayList<>();
 		for (Restrictions i : ur) {
-			urs.add(i.getName());
+			urs.add(i.getName().toLowerCase());
 		}
-
+		
 		Results openFoodAPI = rt.getForObject("https://world.openfoodfacts.org/api/v0/product/" + b + ".json",
 				Results.class);
 
@@ -83,11 +85,12 @@ public class OpenFoodApiController {
 		String[] allergens = openFoodAPI.getProduct().getAllergens_from_ingredients().split(",");
 
 		for (String i : allergens) {
-			if (urs.contains(i)) {
+			if (urs.contains(i.toLowerCase())) {
 				mv.addObject("redlight", true);
 			}
+			
 		}
-
+		
 		return mv;
 	}
 
