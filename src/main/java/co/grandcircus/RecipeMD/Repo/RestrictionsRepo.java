@@ -11,5 +11,7 @@ public interface RestrictionsRepo extends JpaRepository<Restrictions, String>{
 	
 	List<Restrictions> findByEmail(String email);
 	
+	List<Restrictions> findByEmailAndCategory(String email, String Category);
+	
 
 }

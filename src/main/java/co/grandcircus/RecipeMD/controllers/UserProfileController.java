@@ -45,8 +45,16 @@ public class UserProfileController {
 			ua_rs.add(i.getRestriction());
 		}
 		
+		//SQL query of all custom allergens for current user
+		List<Restrictions> cr = r.findByEmailAndCategory(up.getEmail(), "Custom");
+		ArrayList<String> crs = new ArrayList<>();
+		for (Restrictions i : cr) {
+			crs.add(i.getName());
+		}
+		
 		ModelAndView mv = new ModelAndView("options", "res", urs);
 		mv.addObject("allAllergies", ua_rs);
+		mv.addObject("customAllergies", crs);
 		return mv;
 	}
 	
@@ -56,7 +64,8 @@ public class UserProfileController {
 			@RequestParam(name = "medications", required = false) List<String> Medications,
 			@RequestParam(name = "Diet_Options", required = false) List<String> Diet_Options,
 			@RequestParam(name = "Religion_Options", required = false) List<String> Religion_Options,
-			@RequestParam(name = "Food_Allergies", required = false) List<String> Allergies) {
+			@RequestParam(name = "Food_Allergies", required = false) List<String> Allergies, 
+			@RequestParam(name = "Custom_Allergies", required = false) List<String> Custom) {
 
 		//SQL query in all ingredient restrictions for the current user and copy to STRING list
 		List<Restrictions> ur = r.findByEmail(up.getEmail());
@@ -109,6 +118,16 @@ public class UserProfileController {
 			if (!Allergies.isEmpty()) {
 				for (String s : Allergies) {
 					save.add(new Restrictions(s, up.getEmail(), "Allergies"));
+					}
+				}
+		} catch (NullPointerException e) {
+
+		}
+		
+		try {
+			if (!Custom.isEmpty()) {
+				for (String s : Custom) {
+					save.add(new Restrictions(s, up.getEmail(), "Custom"));
 					}
 				}
 		} catch (NullPointerException e) {
