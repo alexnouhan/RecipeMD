@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
      <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+     <%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <!DOCTYPE html>
 
 <html>
@@ -206,14 +207,12 @@
 -->
 <h1>Food Allergies</h1>
 
-<c:set var="resname" value="${res }"/>
+
 
 <c:forEach var="i" items="${allAllergies }">
 
-<c:set var="j" value="resname.contains('${i }')"/>
-
 <label class="container"> ${i }
-  <input type="checkbox" name="Food_Allergies" value="${i }" <c:if test="${j}">checked</c:if>>
+  <input type="checkbox" name="Food_Allergies" value="${i }" <c:if test="${fn:contains(res, i)}">checked</c:if>>
   <span class="checkmark"></span>
 </label>
 
