@@ -8,13 +8,17 @@
 <title>Recipe MD</title>
 </head>
 <body>
+<div style="font-size:3em">
+<a href="/user_profile">User Profile</a><br>
 
-<a href="/user_profile">User Profile</a>
+<a href="/scanner">Scanner</a><br>
+</div>
 
-<a href="/scanner">Scanner</a>
-<a href="/openfoods">Ingredients</a>
-<a href="/recipes">Recipes</a>
+<div>
+<a href="/openfoods">Ingredients</a><br>
 
+<a href="/recipes">Recipes</a><br>
+</div>
 
 
 </body>

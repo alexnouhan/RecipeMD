@@ -77,7 +77,9 @@
 </style>
 </head>
 <body>
-
+<form action="leave_user_profile" method="get">
+<input type="submit" value="Home">
+</form>
 <form action="user_profile_submission" method="get">
 <!--  
 <h1>Medications</h1>
@@ -452,5 +454,6 @@
 
 <input type="submit" value="Submit">
 </form>
+
 </body>
 </html>

@@ -15,18 +15,32 @@
 	<div class="container">
 		<form name = "barcode" form action="/search" method="post" onsubmit="allergyAlert()">
 			Input Barcode Code:
-			<input type="text" name="barcode">
+			<input type="text" name="barcode" value="${barcode }">
 			<input type="submit" value="Submit">		
 		</form>
 	</div>
 	<p id="demo"></p>
+	
+
 	<!-- This will activate the allergy alert box -->
 	<script>
+		
 		function allergyAlert() {
 			
-			if(window.confirm('Okay')){
-				window.open("/");
+			var r = `recipeSearch?ingredient=${name}`
+			var redlight = `${redlight}`
+			
+			if(redlight) {
+				alert('WARNING! This food item contians some of your selected allergens.');
+			} else {
+			
+			if(window.confirm('Thumbs Up! This food does not contain any of your selected allergens! Click OK to see a list of recipes for this item or CANCEL to return home.')){
+				window.open(r);
+			} else {
+				window.open("/")
 			}
+		}
+		}
 			
 /* 			var alertMessage = confirm("Warning, this recipe has an allergy that you're allergic to.");
 			if(alertMessage == true) {
@@ -42,8 +56,7 @@
 				document.getElementById("demo").innerHTML = result;
 				return result;
 			}
- */			/* alert("Warning, this recipe has an allergy that you're allergic to."); */
- 		}
+ */			/* alert("Warning, this recipe has an allergy that you're allergic to.");} */
 	</script>
 	
 
