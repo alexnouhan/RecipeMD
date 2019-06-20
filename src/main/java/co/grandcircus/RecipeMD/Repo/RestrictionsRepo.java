@@ -10,5 +10,6 @@ import co.grandcircus.RecipeMD.DBEntities.Restrictions;
 public interface RestrictionsRepo extends JpaRepository<Restrictions, String>{
 	
 	List<Restrictions> findByEmail(String email);
+	
 
 }

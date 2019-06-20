@@ -33,7 +33,7 @@ public class UserProfileController {
 
 		List<Restrictions> ur = r.findByEmail(up.getEmail());
 		ArrayList<String> urs = new ArrayList<>();
-
+		
 		for (Restrictions i : ur) {
 			urs.add(i.getName());
 		}
@@ -44,6 +44,8 @@ public class UserProfileController {
 		for (All_Restrictions i : ua_r) {
 			ua_rs.add(i.getRestriction());
 		}
+		
+		System.out.println(urs);
 		
 		ModelAndView mv = new ModelAndView("options", "res", urs);
 		mv.addObject("allAllergies", ua_rs);
@@ -57,6 +59,97 @@ public class UserProfileController {
 			@RequestParam(name = "Diet_Options", required = false) List<String> Diet_Options,
 			@RequestParam(name = "Religion_Options", required = false) List<String> Religion_Options,
 			@RequestParam(name = "Food_Allergies", required = false) List<String> Allergies) {
+
+		//SQL query in all ingredient restrictions for the current user and copy to STRING list
+		List<Restrictions> ur = r.findByEmail(up.getEmail());
+		List<String> urs = new ArrayList<>();
+		for (Restrictions i : ur) {
+			urs.add(i.getName());
+		}
+
+		//SQL query list of ALL RESTRICTIONS and copy to STRING list
+		List<All_Restrictions> ua_r = a.findAll(); 
+		List<String> ua_rs = new ArrayList<>();		
+		for (All_Restrictions i : ua_r) {
+			ua_rs.add(i.getRestriction());
+		}
+		
+		//Initialize temp list of new selections
+		List<Restrictions> save = new ArrayList<>();
+		
+		//blocks of comparison for each category against the existing SQL user restrictions list
+		//
+		try {
+			for (String e : Medications) {
+				if (!urs.contains(e)) {
+					Restrictions tempr = new Restrictions(e, up.getEmail(), "Medication");
+					r.save(tempr);
+				}
+			}
+		} catch (NullPointerException e) {
+
+		}
+
+		try {
+			if (!Diet_Options.isEmpty()) {
+				for (String e : Diet_Options) {
+					if (!urs.contains(e)) {
+						Restrictions tempr = new Restrictions(e, up.getEmail(), "Diet");
+						r.save(tempr);
+					}
+				}
+			}
+		} catch (NullPointerException e) {
+
+		}
+
+		try {
+			if (!Religion_Options.isEmpty()) {
+				for (String e : Religion_Options) {
+					if (!urs.contains(e)) {
+						Restrictions tempr = new Restrictions(e, up.getEmail(), "Religion");
+						r.save(tempr);
+					}
+				}
+			}
+		} catch (NullPointerException e) {
+
+		}
+
+		try {
+			if (!Allergies.isEmpty()) {
+				for (String e : Allergies) {
+					if (!urs.contains(e)) {
+						//Restrictions tempr = new Restrictions(e, up.getEmail(), "Allergies");
+						save.add(new Restrictions(e, up.getEmail(), "Allergies"));
+						//r.save(tempr);
+					}
+				}
+			}
+		} catch (NullPointerException e) {
+
+		}
+		
+		for (Restrictions i : ur) {
+			 if (save.contains(i)) {
+				 ur.remove(i);
+			 }
+		}
+		
+		r.deleteAll(ur);
+		
+		r.saveAll(save);
+
+		return new ModelAndView("redirect:user_profile");
+	}
+	
+	@RequestMapping("/leave_user_profile")
+	public ModelAndView leaveUserProfile(
+			@RequestParam(name = "medications", required = false) List<String> Medications,
+			@RequestParam(name = "Diet_Options", required = false) List<String> Diet_Options,
+			@RequestParam(name = "Religion_Options", required = false) List<String> Religion_Options,
+			@RequestParam(name = "Food_Allergies", required = false) List<String> Allergies) {
+
 
 		List<Restrictions> ur = r.findByEmail(up.getEmail());
 		List<String> urs = new ArrayList<>();
@@ -121,10 +214,9 @@ public class UserProfileController {
 		} catch (NullPointerException e) {
 
 		}
+		
 
-		ModelAndView mv = new ModelAndView("options", "res", urs);
-		mv.addObject("allAllergies", ua_rs);
-		return mv;
+		return new ModelAndView("index");
 	}
 
 }
