@@ -1,3 +1,5 @@
+// The UserProfileController stores the methods to input and output the data stored in the userprofile and restrictions database
+
 package co.grandcircus.RecipeMD.controllers;
 
 import java.util.ArrayList;
@@ -20,6 +22,7 @@ import co.grandcircus.RecipeMD.Repo.RestrictionsRepo;
 public class UserProfileController {
 	RestTemplate rt = new RestTemplate();
 
+	// Automatic injection of POJOs 
 	@Autowired
 	RestrictionsRepo r;
 
@@ -32,25 +35,35 @@ public class UserProfileController {
 	public ModelAndView displayUserProfile() {
 
 		//SQL query in all ingredient restrictions for the current user and copy to STRING list
-		List<Restrictions> ur = r.findByEmail(up.getEmail());
+		List<Restrictions> userRestrictions = r.findByEmail(up.getEmail());
 		ArrayList<String> urs = new ArrayList<>();
-		for (Restrictions i : ur) {
+		for (Restrictions i : userRestrictions) {
 			urs.add(i.getName());
 		}
 
 		//SQL query list of ALL RESTRICTIONS and copy to STRING list
-		List<All_Restrictions> ua_r = a.findAll(); 
+		List<All_Restrictions> ua_r = a.findAll();
+		
 		List<String> ua_rs = new ArrayList<>();
+		
 		for (All_Restrictions i : ua_r) {
 			ua_rs.add(i.getRestriction());
 		}
 		
+		//alphabetize ua_rs here
+		ua_rs.sort(String.CASE_INSENSITIVE_ORDER);
+		
 		//SQL query of all custom allergens for current user
 		List<Restrictions> cr = r.findByEmailAndCategory(up.getEmail(), "Custom");
+		
 		ArrayList<String> crs = new ArrayList<>();
+		
 		for (Restrictions i : cr) {
 			crs.add(i.getName());
 		}
+		
+		//alphabetize crs here
+		crs.sort(String.CASE_INSENSITIVE_ORDER);
 		
 		ModelAndView mv = new ModelAndView("options", "res", urs);
 		mv.addObject("allAllergies", ua_rs);
@@ -68,9 +81,9 @@ public class UserProfileController {
 			@RequestParam(name = "Custom_Allergies", required = false) List<String> Custom) {
 
 		//SQL query in all ingredient restrictions for the current user and copy to STRING list
-		List<Restrictions> ur = r.findByEmail(up.getEmail());
+		List<Restrictions> userRestrictions = r.findByEmail(up.getEmail());
 		List<String> urs = new ArrayList<>();
-		for (Restrictions i : ur) {
+		for (Restrictions i : userRestrictions) {
 			urs.add(i.getName());
 		}
 
@@ -135,14 +148,14 @@ public class UserProfileController {
 		}
 		
 		//compare JSP page list with SQL table list and remove overlap
-		for (Restrictions i : ur) {
+		for (Restrictions i : userRestrictions) {
 			 if (save.contains(i)) {
-				 ur.remove(i);
+				 userRestrictions.remove(i);
 			 }
 		}
 		
 		//clean out SQL table
-		r.deleteAll(ur);
+		r.deleteAll(userRestrictions);
 		//write new selections to SQL table
 		r.saveAll(save);
 
