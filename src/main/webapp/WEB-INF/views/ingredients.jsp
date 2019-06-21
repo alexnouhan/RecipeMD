@@ -10,13 +10,13 @@
 <body>
 
 
-
+	<!-- This HTML code will allow users to input the barcode manually -->
 	<h1>Manual Barcode Scanner</h1>
 	<div class="container">
 		<form name = "barcode" action="/search"  method="post" onsubmit="allergyAlert()">
 			Input Barcode Code:
 			<input type="text" name="barcode" value="${barcode }">
-			<input type="submit" value="Submit">		
+			<input type="submit" value="Submit">
 		</form>
 	</div>
 	<p id="demo"></p>

@@ -21,8 +21,7 @@
 					<tr>
 						<td><a href="${f.href}">${f.title}</a></td>
 						<td><a href="${f.href}"><img src="${f.thumbnail}"></a></td>
-					</tr>
-			
+					</tr>			
 				</c:forEach>
 			</tbody>
 		</table>
