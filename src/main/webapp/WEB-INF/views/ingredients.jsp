@@ -13,7 +13,7 @@
 	<!-- This HTML code will allow users to input the barcode manually -->
 	<h1>Manual Barcode Scanner</h1>
 	<div class="container">
-		<form name = "barcode" action="/search"  method="post" onsubmit="allergyAlert()">
+		<form name = "barcode"  action="/search" method="post">
 			Input Barcode Code:
 			<input type="text" name="barcode" value="${barcode }">
 			<input type="submit" value="Submit">
@@ -21,28 +21,32 @@
 	</div>
 	<p id="demo"></p>
 	
+		<div class="container">
+		<button  onclick="allergyAlert()">Check Restrictions</button>
+	</div>
+	
 
 	<!-- This will activate the allergy alert box -->
 	<script>
 		
 		function allergyAlert() {
 			
-			var r = `recipeSearch?ingredient=${name}`
+			var r = `/recipeSearch?ingredient=${name}`
 			var redlight = `${redlight}`
 			var s = `scanner`
 			if(redlight) {
 			if(	window.confirm('WARNING! This food item contians some of your selected allergens. Click Okay to scan again or click cancel to return home page')){
-				window.open("scanner");
+				window.location.href = "/scanner"
 			} else {
-				window.open("/")
+				window.location.href = "/"
 			}
 			
 			} else {
 			
 			if(window.confirm('Thumbs Up! This food does not contain any of your selected allergens! Click OK to see a list of recipes for this item or CANCEL to return home.')){
-				window.open(r);
+				window.location.href = (r);
 			} else {
-				window.open("/")
+				window.location.href = "/"
 			}
 		}
 		}
