@@ -80,14 +80,47 @@ public class UserProfileController {
 			@RequestParam(name = "Religion_Options", required = false) List<String> Religion_Options,
 			@RequestParam(name = "Food_Allergies", required = false) List<String> Allergies,
 			@RequestParam(name = "Custom_Allergies", required = false) List<String> Custom) {
-		
-		
-		
-		//Hardcoded lists of CATEGORY restrictions
-		List<String> antibiotics = Arrays.asList(new String[] {"dairy", "cream"});
-		List<String> oralContraception = Arrays.asList(new String[] {"grapefruit"});
-		
 
+		// Hardcoded lists of CATEGORY restrictions
+		List<String> antibiotics = Arrays.asList(new String[] { "dairy", "cream" });
+		List<String> oralContraception = Arrays.asList(new String[] { "grapefruit" });
+		List<String> CA2Channel = Arrays.asList(new String[] { "grapefruit", "caffeine", "bread" });
+		List<String> levothryroxine = Arrays.asList(new String[] { "grapefruit", "soy", "cotton seed meal", "walnuts",
+				"dietary fiber", "calcium", "calcium fortified juices" });
+		List<String> tamoxifen = Arrays.asList(new String[] { "sesame seeds", "grapefruit", "tangerines", "soy" });
+		List<String> mercaptopurine = Arrays.asList(new String[] { "alcohol", "cream", "dairy" });
+		List<String> celiprolo = Arrays.asList(new String[] { "orange" });
+		List<String> warfarin = Arrays.asList(new String[] { "kale", "spinach", "broccoli", "onions", "cranberry" });
+		List<String> insulin = Arrays.asList(new String[] { "alcohol" });
+		List<String> statin = Arrays.asList(new String[] { "grapefruit" });
+		List<String> acetaminophen = Arrays.asList(new String[] { "alcohol" });
+		List<String> methyphenidate = Arrays.asList(new String[] { "broccoli", "strawberry", "potato", "tomato" });
+
+		
+		// hardcoded list of diet options
+		List<String> ketoDiet = Arrays.asList(new String[] { "milk", "cream", "dairy", "potato", "corn", "sugar",
+				"maple", "marshmellow", "honey", "gluten", "fructose", "alcohol", "grains", "legumes" });
+		List<String> paleoDiet = Arrays
+				.asList(new String[] { "sugar", "fructose", "milk", "cream", "dairy", "alcohol" });
+		List<String> whole30 = Arrays.asList(new String[] { "dairy", "cream", "milk", "sugar", "fructose", "maple",
+				"flour", "legumes", "alcohol", "grains", "honey" });
+		List<String> mediterranean = Arrays
+				.asList(new String[] { "sugar", "fructose", "alcohol", "dairy", "cream", "milk", "maple", "honey" });
+
+		
+		// hardcoded list of religious options
+		List<String> seventhDayAdventist = Arrays
+				.asList(new String[] { "steak", "pork", "bacon", "beef", "meat", "chicken", "fish", "alcohol" });
+		List<String> mormonism = Arrays.asList(new String[] { "alcohol", "caffeine", "tea", "chocolate" });
+		List<String> judaism = Arrays.asList(
+				new String[] { "marshmellow", "gelatin", "pork", "scallops", "shellfish", "shrimp", "bacon", "clams",
+						"crab", "crayfish", "mussels", "oysters", "lobster", "pelican", "eagle", "owl", "swan" });
+		List<String> islam = Arrays.asList(new String[] { "pork", "bacon", "alcohol", "gelatin", "marshmellow" });
+		List<String> hinduism = Arrays
+				.asList(new String[] { "meat", "beef", "pork", "bacon", "chicken", "gelatin", "marshmellow" });
+		List<String> buddhism = Arrays.asList(new String[] {"alcohol", "bacon", "beef", "chicken", "crab", "crayfish", "fish", "lamb", "lobster", "meat", "mussels", "oysters", "pork", "scallops", "shellfish", "shrimp", "steak"}); 
+		
+		
 		// SQL query in all ingredient restrictions for the current user and copy to
 		// STRING list
 		List<Restrictions> userRestrictions = r.findByEmail(up.getEmail());
@@ -110,8 +143,9 @@ public class UserProfileController {
 		// restrictions list
 		//
 		try {
-			//conditionals for each hardcoded INTERACTION SET of restrictions
-			//a for loop in every if statement to put all the hardcoded values in the DB table
+			// conditionals for each hardcoded INTERACTION SET of restrictions
+			// a for loop in every if statement to put all the hardcoded values in the DB
+			// table
 			for (String s : Medications) {
 				if (s.equalsIgnoreCase("Antibiotics")) {
 					for (String z : antibiotics) {
@@ -121,27 +155,106 @@ public class UserProfileController {
 					for (String z : oralContraception) {
 						save.add(new Restrictions(z, up.getEmail(), "Medication"));
 					}
-				} 
-			}
-			
-		} catch (NullPointerException e) {
-
-		}
-
-		try {
-			if (!Diet_Options.isEmpty()) {
-				for (String s : Diet_Options) {
-					save.add(new Restrictions(s, up.getEmail(), "Diet"));
+				} else if (s.equalsIgnoreCase("CA2Channel")) {
+					for (String z : CA2Channel) {
+						save.add(new Restrictions(z, up.getEmail(), "Medication"));
+					}
+				} else if (s.equalsIgnoreCase("Levothryroxine")) {
+					for (String z : levothryroxine) {
+						save.add(new Restrictions(z, up.getEmail(), "Medication"));
+					}
+				} else if (s.equalsIgnoreCase("Tamoxifen")) {
+					for (String z : tamoxifen) {
+						save.add(new Restrictions(z, up.getEmail(), "Medication"));
+					}
+				} else if (s.equalsIgnoreCase("Mercaptopurine")) {
+					for (String z : mercaptopurine) {
+						save.add(new Restrictions(z, up.getEmail(), "Medication"));
+					}
+				} else if (s.equalsIgnoreCase("Celiprolo")) {
+					for (String z : celiprolo) {
+						save.add(new Restrictions(z, up.getEmail(), "Medication"));
+					}
+				} else if (s.equalsIgnoreCase("Warfarin")) {
+					for (String z : warfarin) {
+						save.add(new Restrictions(z, up.getEmail(), "Medication"));
+					}
+				} else if (s.equalsIgnoreCase("Insulin")) {
+					for (String z : insulin) {
+						save.add(new Restrictions(z, up.getEmail(), "Medication"));
+					}
+				} else if (s.equalsIgnoreCase("Statin")) {
+					for (String z : statin) {
+						save.add(new Restrictions(z, up.getEmail(), "Medication"));
+					}
+				} else if (s.equalsIgnoreCase("Acetaminophen")) {
+					for (String z : acetaminophen) {
+						save.add(new Restrictions(z, up.getEmail(), "Medication"));
+					}
+				} else if (s.equalsIgnoreCase("Methyphenidate")) {
+					for (String z : methyphenidate) {
+						save.add(new Restrictions(z, up.getEmail(), "Medication"));
+					}
 				}
 			}
+
 		} catch (NullPointerException e) {
 
 		}
 
 		try {
-			if (!Religion_Options.isEmpty()) {
-				for (String s : Religion_Options) {
-					save.add(new Restrictions(s, up.getEmail(), "Religion"));
+
+			for (String s : Diet_Options) {
+				if (s.equalsIgnoreCase("Keto Diet")) {
+					for (String z : ketoDiet) {
+						save.add(new Restrictions(z, up.getEmail(), "Diet_Options"));
+					}
+				} else if (s.equalsIgnoreCase("Paleo Diet")) {
+					for (String z : paleoDiet) {
+						save.add(new Restrictions(z, up.getEmail(), "Diet_Options"));
+					}
+				} else if (s.equalsIgnoreCase("Whole 30")) {
+					for (String z : whole30) {
+						save.add(new Restrictions(z, up.getEmail(), "Diet_Options"));
+					}
+				} else if (s.equalsIgnoreCase("Mediterranean")) {
+					for (String z : mediterranean) {
+						save.add(new Restrictions(z, up.getEmail(), "Diet_Options"));
+					}
+				}
+
+			}
+
+		} catch (NullPointerException e) {
+
+		}
+
+		try {
+			for (String s : Religion_Options) {
+				if (s.equalsIgnoreCase("Seventh-Day Adventists")) {
+					for (String z : seventhDayAdventist) {
+						save.add(new Restrictions(z, up.getEmail(), "Religion_Options"));
+					}
+				} else if (s.equalsIgnoreCase("Mormonism")) {
+					for (String z : mormonism) {
+						save.add(new Restrictions(z, up.getEmail(), "Religion_Options"));
+					}
+				} else if (s.equalsIgnoreCase("Judaism")) {
+					for (String z : judaism) {
+						save.add(new Restrictions(z, up.getEmail(), "Religion_Options"));
+					}
+				} else if (s.equalsIgnoreCase("Islam")) {
+					for (String z : islam) {
+						save.add(new Restrictions(z, up.getEmail(), "Religion_Options"));
+					}
+				} else if (s.equalsIgnoreCase("Hinduism")) {
+					for (String z : hinduism) {
+						save.add(new Restrictions(z, up.getEmail(), "Religion_Options"));
+					}
+				} else if (s.equalsIgnoreCase("Buddhism")) {
+					for (String z : buddhism) {
+						save.add(new Restrictions(z, up.getEmail(), "Religion_Options"));
+					}
 				}
 			}
 		} catch (NullPointerException e) {

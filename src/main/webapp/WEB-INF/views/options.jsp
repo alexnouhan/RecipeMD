@@ -141,7 +141,7 @@
 </label> 
 
 
-<!-- 
+
 <h1>Diet Options</h1>
 <label class="container"> Ketogentic
   <input type="checkbox" name="Diet_Options" value="Ketogentic">
@@ -198,12 +198,8 @@
   <input type="checkbox" name="Religion_Options" value="Seventh-Day Adventist">
   <span class="checkmark"></span>
 </label>
-<label class="container">Rastafarianism
-  <input type="checkbox" name="Religion_Options" value="Rastafarianism">
-  <span class="checkmark"></span>
-</label>
- -->
 
+ 
 
 
 
