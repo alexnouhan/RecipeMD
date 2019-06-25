@@ -3,6 +3,7 @@
 package co.grandcircus.RecipeMD.controllers;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,6 +80,13 @@ public class UserProfileController {
 			@RequestParam(name = "Religion_Options", required = false) List<String> Religion_Options,
 			@RequestParam(name = "Food_Allergies", required = false) List<String> Allergies,
 			@RequestParam(name = "Custom_Allergies", required = false) List<String> Custom) {
+		
+		
+		
+		//Hardcoded lists of CATEGORY restrictions
+		List<String> antibiotics = Arrays.asList(new String[] {"dairy", "cream"});
+		List<String> oralContraception = Arrays.asList(new String[] {"grapefruit"});
+		
 
 		// SQL query in all ingredient restrictions for the current user and copy to
 		// STRING list
@@ -102,9 +110,20 @@ public class UserProfileController {
 		// restrictions list
 		//
 		try {
+			//conditionals for each hardcoded INTERACTION SET of restrictions
+			//a for loop in every if statement to put all the hardcoded values in the DB table
 			for (String s : Medications) {
-				save.add(new Restrictions(s, up.getEmail(), "Medication"));
+				if (s.equalsIgnoreCase("Antibiotics")) {
+					for (String z : antibiotics) {
+						save.add(new Restrictions(z, up.getEmail(), "Medication"));
+					}
+				} else if (s.equalsIgnoreCase("Oral Contraception")) {
+					for (String z : oralContraception) {
+						save.add(new Restrictions(z, up.getEmail(), "Medication"));
+					}
+				} 
 			}
+			
 		} catch (NullPointerException e) {
 
 		}
