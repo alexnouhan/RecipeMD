@@ -81,7 +81,7 @@
 <input type="submit" value="Home">
 </form>
 <form action="user_profile_submission" method="get">
-<!--  
+
 <h1>Medications</h1>
 <label class="container">Antibiotics
 <input type="checkbox" name="medications" value="Antibiotics">
@@ -141,7 +141,7 @@
 </label> 
 
 
-
+<!-- 
 <h1>Diet Options</h1>
 <label class="container"> Ketogentic
   <input type="checkbox" name="Diet_Options" value="Ketogentic">
@@ -202,14 +202,13 @@
   <input type="checkbox" name="Religion_Options" value="Rastafarianism">
   <span class="checkmark"></span>
 </label>
- 
+ -->
 
 
 
--->
+
+
 <h1>Food Allergies</h1>
-
-
 
 <c:forEach var="i" items="${allAllergies }">
 
@@ -233,6 +232,7 @@
 <input type= "text" name="Custom_Allergies">
 <input type="submit" value="Submit">
 </form>
+
 
 
 </body>
