@@ -80,6 +80,8 @@ public class RecipeController {
 		RecipePuppy response2 = rt.getForObject("http://www.recipepuppy.com/api/?q=" + in + "&p=2", RecipePuppy.class);
 
 		RecipePuppy response3 = rt.getForObject("http://www.recipepuppy.com/api/?q=" + in + "&p=3", RecipePuppy.class);
+		
+		RecipePuppy response4 = rt.getForObject("http://www.recipepuppy.com/api/?q=" + in + "&p=4", RecipePuppy.class);
 
 		List<Recipe> list = new ArrayList<>();
 		
@@ -124,10 +126,26 @@ public class RecipeController {
 				}
 			}
 		}
-
+		
+		for (Recipe i : response4.getResults()) {
+			if (urs.isEmpty() & !i.getThumbnail().isBlank()) {
+				list.add(i);
+			} else {
+				for (String j : urs) {
+					if (i.getIngredients().toLowerCase().contains(j) | i.getThumbnail().isBlank()) {
+					} else {
+						list.add(i);
+					}
+				}
+			}
+		}
+		
 		ModelAndView mv = new ModelAndView("/recipes");
 		mv.addObject("list", list.stream().distinct().collect(Collectors.toList()));
+		mv.addObject("ingredient", in);
+		mv.addObject("lastPage", 1);
 
 		return mv;
 	}
+	
 }
