@@ -70,8 +70,14 @@ public class UserProfileController {
 		ModelAndView mv = new ModelAndView("options", "res", urs);
 		mv.addObject("allAllergies", ua_rs);
 		mv.addObject("customAllergies", crs);
+	
 		return mv;
+	
+	
+	
 	}
+	
+	
 
 	@RequestMapping("/user_profile_submission")
 	public ModelAndView userProfileSubmission(
@@ -82,43 +88,43 @@ public class UserProfileController {
 			@RequestParam(name = "Custom_Allergies", required = false) List<String> Custom) {
 
 		// Hardcoded lists of CATEGORY restrictions
-		List<String> antibiotics = Arrays.asList(new String[] { "dairy", "cream" });
-		List<String> oralContraception = Arrays.asList(new String[] { "grapefruit" });
-		List<String> CA2Channel = Arrays.asList(new String[] { "grapefruit", "caffeine", "bread" });
-		List<String> levothryroxine = Arrays.asList(new String[] { "grapefruit", "soy", "cotton seed meal", "walnuts",
-				"dietary fiber", "calcium", "calcium fortified juices" });
-		List<String> tamoxifen = Arrays.asList(new String[] { "sesame seeds", "grapefruit", "tangerines", "soy" });
-		List<String> mercaptopurine = Arrays.asList(new String[] { "alcohol", "cream", "dairy" });
-		List<String> celiprolo = Arrays.asList(new String[] { "orange" });
-		List<String> warfarin = Arrays.asList(new String[] { "kale", "spinach", "broccoli", "onions", "cranberry" });
-		List<String> insulin = Arrays.asList(new String[] { "alcohol" });
-		List<String> statin = Arrays.asList(new String[] { "grapefruit" });
-		List<String> acetaminophen = Arrays.asList(new String[] { "alcohol" });
-		List<String> methyphenidate = Arrays.asList(new String[] { "broccoli", "strawberry", "potato", "tomato" });
+		List<String> antibiotics = Arrays.asList(new String[] { "Dairy", "Cream" });
+		List<String> oralContraception = Arrays.asList(new String[] { "Grapefruit" });
+		List<String> CA2Channel = Arrays.asList(new String[] { "Grapefruit", "Caffeine", "Bread" });
+		List<String> levothryroxine = Arrays.asList(new String[] { "Grapefruit", "Soy", "Cotton Seed Meal", "Walnuts",
+				"Dietary Fiber", "Calcium", "Calcium Fortified Juices" });
+		List<String> tamoxifen = Arrays.asList(new String[] { "Sesame Seeds", "Grapefruit", "Tangerines", "Soy" });
+		List<String> mercaptopurine = Arrays.asList(new String[] { "Alcohol", "Cream", "Dairy" });
+		List<String> celiprolo = Arrays.asList(new String[] { "Orange" });
+		List<String> warfarin = Arrays.asList(new String[] { "Kale", "Spinach", "Broccoli", "Onions", "Cranberry" });
+		List<String> insulin = Arrays.asList(new String[] { "Alcohol" });
+		List<String> statin = Arrays.asList(new String[] { "Grapefruit" });
+		List<String> acetaminophen = Arrays.asList(new String[] { "Alcohol" });
+		List<String> methyphenidate = Arrays.asList(new String[] { "Broccoli", "Strawberry", "Potato", "Tomato" });
 
 		
 		// hardcoded list of diet options
-		List<String> ketoDiet = Arrays.asList(new String[] { "milk", "cream", "dairy", "potato", "corn", "sugar",
-				"maple", "marshmellow", "honey", "gluten", "fructose", "alcohol", "grains", "legumes" });
+		List<String> ketoDiet = Arrays.asList(new String[] { "Milk", "Cream", "Dairy", "Potato", "Corn", "Sugar",
+				"Maple", "Marshmellow", "Honey", "Gluten", "Fructose", "Alcohol", "Grains", "Legumes" });
 		List<String> paleoDiet = Arrays
-				.asList(new String[] { "sugar", "fructose", "milk", "cream", "dairy", "alcohol" });
-		List<String> whole30 = Arrays.asList(new String[] { "dairy", "cream", "milk", "sugar", "fructose", "maple",
-				"flour", "legumes", "alcohol", "grains", "honey" });
+				.asList(new String[] { "Sugar", "Fructose", "Milk", "Cream", "Dairy", "Alcohol" });
+		List<String> whole30 = Arrays.asList(new String[] { "Dairy", "Cream", "Milk", "Sugar", "Fructose", "Maple",
+				"Flour", "Legumes", "Alcohol", "Grains", "Honey" });
 		List<String> mediterranean = Arrays
-				.asList(new String[] { "sugar", "fructose", "alcohol", "dairy", "cream", "milk", "maple", "honey" });
+				.asList(new String[] { "Sugar", "Fructose", "Alcohol", "Dairy", "Cream", "Milk", "Maple", "Honey" });
 
 		
 		// hardcoded list of religious options
 		List<String> seventhDayAdventist = Arrays
-				.asList(new String[] { "steak", "pork", "bacon", "beef", "meat", "chicken", "fish", "alcohol" });
-		List<String> mormonism = Arrays.asList(new String[] { "alcohol", "caffeine", "tea", "chocolate" });
+				.asList(new String[] { "Steak", "Pork", "Bacon", "Beef", "Meat", "Chicken", "Fish", "Alcohol" });
+		List<String> mormonism = Arrays.asList(new String[] { "Alcohol", "Caffeine", "Tea", "Chocolate" });
 		List<String> judaism = Arrays.asList(
-				new String[] { "marshmellow", "gelatin", "pork", "scallops", "shellfish", "shrimp", "bacon", "clams",
-						"crab", "crayfish", "mussels", "oysters", "lobster", "pelican", "eagle", "owl", "swan" });
-		List<String> islam = Arrays.asList(new String[] { "pork", "bacon", "alcohol", "gelatin", "marshmellow" });
+				new String[] { "Marshmellow", "Gelatin", "Pork", "Scallops", "Shellfish", "Shrimp", "Bacon", "Clams",
+						"Crab", "Crayfish", "Mussels", "Oysters", "Lobster", "Pelican", "Eagle", "Owl", "Swan" });
+		List<String> islam = Arrays.asList(new String[] { "Pork", "Bacon", "Alcohol", "Gelatin", "Marshmellow" });
 		List<String> hinduism = Arrays
-				.asList(new String[] { "meat", "beef", "pork", "bacon", "chicken", "gelatin", "marshmellow" });
-		List<String> buddhism = Arrays.asList(new String[] {"alcohol", "bacon", "beef", "chicken", "crab", "crayfish", "fish", "lamb", "lobster", "meat", "mussels", "oysters", "pork", "scallops", "shellfish", "shrimp", "steak"}); 
+				.asList(new String[] { "Meat", "Beef", "Pork", "Bacon", "Chicken", "Gelatin", "Marshmellow" });
+		List<String> buddhism = Arrays.asList(new String[] {"Alcohol", "Bacon", "Beef", "Chicken", "Crab", "Crayfish", "Fish", "Lamb", "Lobster", "Meat", "Mussels", "Oysters", "Pork", "Scallops", "Shellfish", "Shrimp", "Steak"}); 
 		
 		
 		// SQL query in all ingredient restrictions for the current user and copy to
