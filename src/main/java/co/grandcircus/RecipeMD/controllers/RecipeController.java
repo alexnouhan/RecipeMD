@@ -86,7 +86,7 @@ public class RecipeController {
 
 		for (Recipe i : response.getResults()) {
 			
-			if (urs.isEmpty()) {
+			if (urs.isEmpty() & !i.getThumbnail().isBlank()) {
 				list.add(i);
 			} else {
 				for (String j : urs) {
@@ -99,7 +99,7 @@ public class RecipeController {
 		}
 		
 		for (Recipe i : response2.getResults()) {
-			if (urs.isEmpty()) {
+			if (urs.isEmpty() & !i.getThumbnail().isBlank()) {
 				list.add(i);
 			} else {
 				for (String j : urs) {
@@ -111,8 +111,9 @@ public class RecipeController {
 			}
 		}
 		
+		
 		for (Recipe i : response3.getResults()) {
-			if (urs.isEmpty()) {
+			if (urs.isEmpty() & !i.getThumbnail().isBlank()) {
 				list.add(i);
 			} else {
 				for (String j : urs) {
