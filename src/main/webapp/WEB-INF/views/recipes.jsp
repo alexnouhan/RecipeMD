@@ -4,7 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1" name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="ISO-8859-1" name="viewport"
+	content="width=device-width, initial-scale=1">
 
 <title>Insert title here</title>
 <link
@@ -13,36 +14,34 @@
 <style>
 table {
 	border-collapse: collapse;
-	border-radius: 1em;
+	border-radius: .7em;
 	overflow: hidden;
-	width: 750px;
-	display: flex;
-	justify-content: center;
-	font-size: 40px;
+	width: 400px;
 }
 
 th, td {
-	width: 750px;
-	padding: 1em;
+	width: 100%;
+	padding: .5em;
 	background: #ddd;
 	border-bottom: 2px solid white;
-	
 }
+
 a {
 	color: black;
-
+	text-decoration: none;
 }
 
 .btn {
-    width:49%;
-    font-size:3em;
-    background-color:#3daf57;
-    border:none;
-    padding: 16px,32px;
-    text-decoration: none;
-    cursor: pointer;
-    border-radius:8px;
-    color: white;
+	width: 49%;
+	height: 100px;
+	font-size: 2em;
+	background-color: #3daf57;
+	border: none;
+	padding: 16px, 32px;
+	text-decoration: none;
+	cursor: pointer;
+	border-radius: 8px;
+	color: white;
 }
 </style>
 <link rel="stylesheet" type="text/css" href="ztylez.css">
@@ -50,11 +49,11 @@ a {
 </head>
 <body style="font-family: 'Roboto Condensed', sans-serif;">
 
-	<form action="/recipeSearch" style="display:none">
+	<form action="/recipeSearch" style="display: none">
 		<input id="ingredient" name="ingredient"><input type="submit"
 			label="Submit">
 	</form>
-	
+
 	<div class="container">
 		<table class="table" style="text-align: center; font-size: 4em;">
 			<tbody>
@@ -64,22 +63,28 @@ a {
 			</tbody>
 		</table>
 
-		<table class="table" style="text-align: center; font-size: 2.7em;">
-			<tbody>
-				<c:forEach var="f" items="${list}">
-					<tr>
-						<td><a href="${f.href}">${f.title}</a></td>
-						<td><a href="${f.href}"><img width=300 src="${f.thumbnail}"></a></td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
+
+		<c:forEach var="f" items="${list}">
+			<a href="${f.href}">
+				<table class="table" style="text-align: center; font-size: 2em;">
+					<tbody>
+						<tr>
+							<td>${f.title}</td>
+							<td style="padding-right: 50px"><img width=100 src="${f.thumbnail}"></td>
+						</tr>
+					</tbody>
+				</table>
+				</a>
+		</c:forEach>
+
 	</div>
-<div class="footer" style="width:100%;">
-  <button class="btn" onclick="window.location.href = '/scanner';">Scanner</button>
-  <button class="btn" onclick="window.location.href = '/user_profile';">User Profile</button>
-  
-  
-</div>
+	<p></p>
+	<p></p>
+	<p></p>
+	<div class="footer">
+		<button class="btn" onclick="window.location.href = '/scanner';">Scanner</button>
+		<button class="btn" onclick="window.location.href = '/user_profile';">User
+			Profile</button>
+	</div>
 </body>
 </html>

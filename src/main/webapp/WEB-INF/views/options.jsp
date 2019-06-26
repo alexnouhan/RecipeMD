@@ -88,7 +88,7 @@ h1 {
    font-size: 7em;
  }
  input[type=button], input[type=submit], input[type=reset] {
-  background-color: #4CAF50;
+  background-color: #3daf57;
   border: none;
   color: white;
   padding: 16px 32px;

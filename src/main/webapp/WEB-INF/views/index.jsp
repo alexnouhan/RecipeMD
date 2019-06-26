@@ -12,13 +12,13 @@ table {
 	border-collapse: collapse;
 	border-radius: 1em;
 	overflow: hidden;
-	width: 750px;
+	width: 960px;
 	font-size: 7em;
 
 }
 
 th, td {
-	width: 750px;
+	width: 960px;
 	padding: 1em;
 	background: #ddd;
 	border-bottom: 2px solid white;
