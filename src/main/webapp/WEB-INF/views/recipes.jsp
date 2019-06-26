@@ -32,9 +32,9 @@ a {
 }
 
 .btn {
-	width: 49%;
+	width: 48%;
 	height: 100px;
-	font-size: 2em;
+	font-size: 1.7em;
 	background-color: #3daf57;
 	border: none;
 	padding: 16px, 32px;
