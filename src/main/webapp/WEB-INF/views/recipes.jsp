@@ -4,7 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="ISO-8859-1" name="viewport" content="width=device-width, initial-scale=1">
+
 <title>Insert title here</title>
 <link
 	href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap"
@@ -30,6 +31,18 @@ th, td {
 a {
 	color: black;
 
+}
+
+.btn {
+    width:49%;
+    font-size:3em;
+    background-color:#3daf57;
+    border:none;
+    padding: 16px,32px;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius:8px;
+    color: white;
 }
 </style>
 <link rel="stylesheet" type="text/css" href="ztylez.css">
@@ -62,6 +75,11 @@ a {
 			</tbody>
 		</table>
 	</div>
-
+<div class="footer" style="width:100%;">
+  <button class="btn" onclick="window.location.href = '/scanner';">Scanner</button>
+  <button class="btn" onclick="window.location.href = '/user_profile';">User Profile</button>
+  
+  
+</div>
 </body>
 </html>
