@@ -15,7 +15,7 @@
   padding-left: 35px;
   margin-bottom: 12px;
   cursor: pointer;
-  font-size: 3em;
+  font-size: 6em;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -34,10 +34,10 @@
 /* Create a custom checkbox */
 .checkmark {
   position: absolute;
-  top: 0;
-  left: 0;
-  height: 25px;
-  width: 25px;
+  top: 10px;
+  left: -45px;
+  height: 80px;
+  width: 80px;
   background-color: #eee;
 }
 
@@ -65,29 +65,50 @@
 
 /* Style the checkmark/indicator */
 .container .checkmark:after {
-  left: 9px;
-  top: 5px;
-  width: 5px;
-  height: 10px;
+  left: 26px;
+  top: 10px;
+  width: 20px;
+  height: 40px;
   border: solid white;
-  border-width: 0 3px 3px 0;
+  border-width: 0 12px 12px 0;
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
 
 h1 {
-  font-size:4em;
+  font-size:6.5em;
+}
+
+ input[type=text] {
+   width:100%;
+   height: 200px;
+   border: 2px solid green;
+   border-radius: 4px;
+   font-size: 7em;
+ }
+ input[type=button], input[type=submit], input[type=reset] {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  font-size:6em;
+  cursor: pointer;
+  width:100%;
+  height: 200px;
 }
 </style>
 <link rel="stylesheet" type="text/css" href="ztylez.css">
 </head>
-<body style="font-family: 'Roboto Condensed', sans-serif;">
+<body style="font-family: 'Roboto Condensed', sans-serif; margin:7.5em;">
+
 <form action="leave_user_profile" method="get">
 <input type="submit" value="Home">
 </form>
 <form action="user_profile_submission" method="get">
 
+<!--  
 <h1>Medications</h1>
 <label class="container">Antibiotics
 <input type="checkbox" name="medications" value="Antibiotics" <c:if test="${fn:contains(categories, 'Antibiotics')}">checked</c:if>>
@@ -205,8 +226,7 @@ h1 {
   <span class="checkmark"></span>
 </label>
 
- 
-
+-->
 
 
 

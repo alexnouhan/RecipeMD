@@ -13,9 +13,8 @@ table {
 	border-radius: 1em;
 	overflow: hidden;
 	width: 750px;
-	display: flex;
-	justify-content: center;
-	font-size: 40px;
+	font-size: 7em;
+
 }
 
 th, td {
@@ -25,30 +24,38 @@ th, td {
 	border-bottom: 2px solid white;
 	text-align: center;
 }
+a {
+   text-decoration: none;
+   color: black;
+}
 </style>
 <link rel="stylesheet" type="text/css" href="ztylez.css">
 </head>
 <body style="font-family: 'Roboto Condensed', sans-serif;">
 	<!-- This will output the views from the controllers -->
-
+	
+<img width=1000 src="Logo.png">	
+	
+<a href="/user_profile">
 		<table>
 			<tr>
-				<td><a href="/user_profile">User Profile</a></td>
+				<td>User Profile</td>
 			</tr>
 		</table>
-
-
+</a>
+<a href="/scanner">
 		<table>
 			<tr>
-				<td><a href="/scanner">Scanner</a></td>
+				<td>Scanner</td>
 			</tr>
 		</table>
-
+</a>
 
 
 
 	<div>
 		<a href="/openfoods">Ingredients</a><br> <a href="/recipes">Recipes</a><br>
 	</div>
+	
 </body>
 </html>
