@@ -44,6 +44,7 @@ public class OpenFoodApiController {
 		ModelAndView mv = new ModelAndView("ingredients", "list", openFoodAPI.getProduct().getIngredients());
 		mv.addObject("name", openFoodAPI.getProduct().getProduct_name_en());
 		mv.addObject("allergens", openFoodAPI.getProduct().getAllergens_from_ingredients());
+		mv.addObject("brands", openFoodAPI.getProduct().getBrands());
 		mv.addObject("barcode", "0737628064502");
 
 		// Connecting the restriction database for the current use to the allergen search result
@@ -74,12 +75,19 @@ System.out.println(urs);
 			urs.add(i.getName().toLowerCase());
 		}
 		
+		ModelAndView mv = new ModelAndView("ingredients");
+		
+		
+		try {
 		Results openFoodAPI = rt.getForObject("https://world.openfoodfacts.org/api/v0/product/" + b + ".json",
 				Results.class);
+		
 
-		ModelAndView mv = new ModelAndView("ingredients", "list", openFoodAPI.getProduct().getIngredients());
+
+		mv.addObject("list", openFoodAPI.getProduct().getIngredients());
 		mv.addObject("name", openFoodAPI.getProduct().getProduct_name_en());
 		mv.addObject("allergens", openFoodAPI.getProduct().getAllergens_from_ingredients());
+		mv.addObject("brands", openFoodAPI.getProduct().getBrands());
 		mv.addObject("barcode", b);
 
 		String[] allergens = openFoodAPI.getProduct().getAllergens_from_ingredients().split(",");
@@ -89,6 +97,10 @@ System.out.println(urs);
 				mv.addObject("redlight", true);
 			}
 			
+		}
+		
+		}catch (NullPointerException e) {
+			return new ModelAndView("index");
 		}
 		
 		return mv;

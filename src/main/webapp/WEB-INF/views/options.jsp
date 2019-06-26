@@ -6,6 +6,7 @@
 
 <html>
 <head>
+<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">
 <style>
 /* The container */
 .container {
@@ -14,7 +15,7 @@
   padding-left: 35px;
   margin-bottom: 12px;
   cursor: pointer;
-  font-size: 22px;
+  font-size: 3em;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -74,9 +75,14 @@
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
+
+h1 {
+  font-size:4em;
+}
 </style>
+<link rel="stylesheet" type="text/css" href="ztylez.css">
 </head>
-<body>
+<body style="font-family: 'Roboto Condensed', sans-serif;">
 <form action="leave_user_profile" method="get">
 <input type="submit" value="Home">
 </form>
@@ -84,7 +90,7 @@
 
 <h1>Medications</h1>
 <label class="container">Antibiotics
-<input type="checkbox" name="medications" value="Antibiotics">
+<input type="checkbox" name="medications" value="Antibiotics" <c:if test="${fn:contains(categories, 'Antibiotics')}">checked</c:if>>
 <span class="checkmark"></span>
 </label>
 <label class="container"> Oral Contraception

@@ -17,6 +17,7 @@ import co.grandcircus.RecipeMD.DBEntities.All_Restrictions;
 import co.grandcircus.RecipeMD.DBEntities.Restrictions;
 import co.grandcircus.RecipeMD.DBEntities.UserProfile;
 import co.grandcircus.RecipeMD.Repo.All_RestrictionsRepo;
+import co.grandcircus.RecipeMD.Repo.CategoryRepo;
 import co.grandcircus.RecipeMD.Repo.RestrictionsRepo;
 
 @Controller
@@ -29,12 +30,15 @@ public class UserProfileController {
 
 	@Autowired
 	All_RestrictionsRepo a;
+	
+	@Autowired
+	CategoryRepo c;
 
 	public static UserProfile up = new UserProfile("email@test.com");
 
 	@RequestMapping("/user_profile")
 	public ModelAndView displayUserProfile() {
-
+		
 		// SQL query in all ingredient restrictions for the current user and copy to
 		// STRING list
 		List<Restrictions> userRestrictions = r.findByEmail(up.getEmail());
@@ -72,11 +76,7 @@ public class UserProfileController {
 		mv.addObject("customAllergies", crs);
 	
 		return mv;
-	
-	
-	
 	}
-	
 	
 
 	@RequestMapping("/user_profile_submission")
@@ -126,7 +126,6 @@ public class UserProfileController {
 				.asList(new String[] { "Meat", "Beef", "Pork", "Bacon", "Chicken", "Gelatin", "Marshmellow" });
 		List<String> buddhism = Arrays.asList(new String[] {"Alcohol", "Bacon", "Beef", "Chicken", "Crab", "Crayfish", "Fish", "Lamb", "Lobster", "Meat", "Mussels", "Oysters", "Pork", "Scallops", "Shellfish", "Shrimp", "Steak"}); 
 		
-		
 		// SQL query in all ingredient restrictions for the current user and copy to
 		// STRING list
 		List<Restrictions> userRestrictions = r.findByEmail(up.getEmail());
@@ -175,7 +174,7 @@ public class UserProfileController {
 					}
 				} else if (s.equalsIgnoreCase("Mercaptopurine")) {
 					for (String z : mercaptopurine) {
-						save.add(new Restrictions(z, up.getEmail(), "Medication"));
+						save.add(new Restrictions(z, up.getEmail(), "Medication_Mercaptopurine"));
 					}
 				} else if (s.equalsIgnoreCase("Celiprolo")) {
 					for (String z : celiprolo) {
@@ -290,7 +289,7 @@ public class UserProfileController {
 		} catch (NullPointerException e) {
 
 		}
-
+		
 		// compare JSP page list with SQL table list and remove overlap
 		for (Restrictions i : userRestrictions) {
 			if (save.contains(i)) {

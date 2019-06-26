@@ -7,10 +7,12 @@
     <link rel="stylesheet" href="pygment_trac.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 </head>
-<body>
+<body style="display: flex;         justify-content: center;
+        align-content: center;
+        align-items: center;
+        height:100%;">
 	<div class="wrapper">
-		<section>
-			<section id="container" class="container">
+
 				<div class="controls" style="display: none">
 					<fieldset class="reader-config-group">
 						<label>
@@ -83,14 +85,13 @@
 					<ul class="thumbnails"></ul>
 				</div>
 				<div id="interactive" class="viewport"></div>
-			</section>
 			
 		<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 		<script src="//webrtc.github.io/adapter/adapter-latest.js" type="text/javascript"></script>
 		<script src="js/quagga.min.js" type="text/javascript"></script>
 		<script src="js/camera.js" type="text/javascript"></script>
 
-		</section>
+
 	</div>
 	<script src="/scale.fix.js"></script>
 </body>
